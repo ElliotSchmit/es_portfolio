@@ -1,0 +1,73 @@
+/* ==========================================================================
+   section / 
+   ========================================================================== */
+
+.section {
+    position: relative;
+    // outline: pink solid 1px;
+    // outline-offset: -4px;
+    .wrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .h1 {
+        text-align: center;
+        line-height: 1.2;
+        width: 50%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    .img:nth-child(1n) {
+        top: 70%;
+        left: 65%;
+    }
+    .img:nth-child(2n + 1) {
+        top: 5%;
+        left: 10%;
+    }
+    .img:nth-child(3n + 1) {
+        top: 10%;
+        left: 40%;
+    }
+    .img:nth-child(4n + 1) {
+        top: 90%;
+        left: 20%;
+    }
+}
+.section--horiz {
+    display: flex;
+    overflow: hidden;
+    .section__content {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+}
+.img {
+    position: absolute;
+    // display: none;
+    object-fit: cover;
+    object-position: top;
+
+    &--large {
+        aspect-ratio: 16 / 9;
+        width: 30%;
+        z-index: 3;
+    }
+    &--medium {
+        aspect-ratio: 1 / 1;
+        width: 25%;
+
+        z-index: 1;
+    }
+    &--small {
+        width: 15%;
+        z-index: 1;
+    }
+}
