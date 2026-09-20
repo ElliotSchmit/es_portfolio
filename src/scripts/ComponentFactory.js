@@ -1,13 +1,7 @@
-import TextAnim from './components/TextAnim.js';
-import Scroller from './components/Scroller.js';
-
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
-    this.componentList = {
-      TextAnim,
-      Scroller,
-    };
+    this.componentList = {};
     this.init();
   }
   init() {

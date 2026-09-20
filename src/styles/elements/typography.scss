@@ -9,17 +9,14 @@ h4,
 h5,
 h6 {
     font-family: var(--font-secondary);
-    line-height: 1.1;
-    font-weight: bold;
+    line-height: auto;
     margin: 0;
 }
 
 h1,
 .h1 {
     font-size: var(--font-size-h1);
-    line-height: 1;
-    font-weight: 800;
-    // letter-spacing: 0.4rem;
+    text-transform: uppercase;
 }
 
 h2 {

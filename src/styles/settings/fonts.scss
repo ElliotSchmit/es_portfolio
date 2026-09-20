@@ -3,11 +3,12 @@
    ========================================================================== */
 /// Font family
 :root {
-    --font-primary: 'Montserrat', sans-serif;
-    --font-secondary: 'Oswald', sans-serif;
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Gloock', serif;
 
     --font-size-content: #{typo(16px, 18px)};
 
     /// Grosseur des textes
-    --font-size-h1: #{typo(66px, 100px)};
+    --font-size-h1: #{typo(40px, 64px)};
+    --font-size-h2: #{typo(30px, 50px)};
 }
