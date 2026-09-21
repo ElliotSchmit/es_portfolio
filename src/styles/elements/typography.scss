@@ -11,12 +11,14 @@ h6 {
     font-family: var(--font-secondary);
     line-height: auto;
     margin: 0;
+    font-weight: 100;
 }
 
 h1,
 .h1 {
     font-size: var(--font-size-h1);
     text-transform: uppercase;
+    line-height: 100%;
 }
 
 h2 {
@@ -41,4 +43,15 @@ h6 {
 
 em {
     font-style: italic;
+}
+
+.subtitle {
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.logo {
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
 }

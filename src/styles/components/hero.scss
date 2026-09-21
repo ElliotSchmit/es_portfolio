@@ -1,0 +1,11 @@
+.hero .wrapper {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: var(--spacing-md);
+
+    align-items: center;
+
+    .hero__media img {
+        width: 100%;
+    }
+}

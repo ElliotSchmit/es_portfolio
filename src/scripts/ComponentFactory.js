@@ -1,7 +1,11 @@
+import Header from './components/Header.js';
+
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
-    this.componentList = {};
+    this.componentList = {
+      Header,
+    };
     this.init();
   }
   init() {
