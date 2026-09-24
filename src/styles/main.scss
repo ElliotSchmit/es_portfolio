@@ -28,10 +28,13 @@
 // COMPONENTS
 // Composants d'interface utilisateur spécifiques.
 // C’est là que la majorité de notre travail a lieu.
+@import 'components/apropos';
 @import 'components/buttons';
+@import 'components/competences';
 @import 'components/header';
 @import 'components/hero';
 @import 'components/hub';
 @import 'components/icons';
 @import 'components/projets';
 @import 'components/sections';
+@import 'components/video';

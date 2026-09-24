@@ -1,0 +1,16 @@
+.competences .card {
+    background-color: var(--color-white);
+    background-image: url('../assets/images/lines.png');
+    color: var(--color-black);
+    padding: 50px;
+
+    ul {
+        display: grid;
+        gap: var(--spacing-md);
+        align-items: center;
+
+        &:nth-child(1) {
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+}

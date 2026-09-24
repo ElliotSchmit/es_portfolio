@@ -1,10 +1,12 @@
 import Header from './components/Header.js';
+import YouTube from './components/YouTube.js';
 
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
     this.componentList = {
       Header,
+      YouTube,
     };
     this.init();
   }

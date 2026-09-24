@@ -1,17 +1,63 @@
 .projets .cards {
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding-top: var(--spacing-lg);
 }
 
 .projets .card {
     background-color: var(--color-white);
     color: var(--color-black);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     width: 66%;
 
     padding: var(--spacing-md);
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    &:nth-child(1) {
+        transform: rotate(7deg) translateY(60px);
+        align-self: flex-end;
+    }
+
+    &:nth-child(1) .timbre {
+        transform: rotate(10deg);
+    }
+
+    &:nth-child(2) {
+        transform: rotate(-3deg) translateY(30px);
+    }
+
+    &:nth-child(2) .timbre {
+        transform: rotate(-1deg);
+    }
+
+    &:nth-child(3) {
+        transform: rotate(4deg);
+        align-self: flex-end;
+    }
+
+    &:nth-child(3) .timbre {
+        transform: rotate(2deg);
+    }
+
+    &:nth-child(4) {
+        transform: rotate(-2deg) translateY(-30px);
+    }
+
+    &:nth-child(4) .timbre {
+        transform: rotate(-3deg);
+    }
+
+    &:nth-child(5) {
+        transform: rotate(2deg) translateY(-60px);
+        align-self: flex-end;
+    }
+
+    &:nth-child(5) .timbre {
+        transform: rotate(6deg);
+    }
 
     .card__media {
         padding-right: var(--spacing-md);
@@ -39,7 +85,6 @@
             position: absolute;
             right: 0;
             top: 0;
-            transform: rotate(10deg);
         }
         .icon {
             position: absolute;
