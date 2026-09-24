@@ -1,4 +1,66 @@
+.projets .cards {
+    display: flex;
+    flex-direction: column;
+}
+
 .projets .card {
     background-color: var(--color-white);
     color: var(--color-black);
+    width: 66%;
+
+    padding: var(--spacing-md);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .card__media {
+        padding-right: var(--spacing-md);
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+
+            aspect-ratio: 8/9;
+        }
+    }
+
+    .card__content {
+        padding-left: var(--spacing-md);
+        border-left: 1px solid var(--color-black);
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--spacing-md);
+
+        img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: rotate(10deg);
+        }
+        .icon {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .categories {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            padding: 5px 10px;
+            border-radius: 6px;
+            background-color: var(--color-bg-secondary);
+        }
+    }
 }
