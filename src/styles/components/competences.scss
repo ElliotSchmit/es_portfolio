@@ -8,6 +8,7 @@
 .competences .card {
     background-color: var(--color-white);
     background-image: url('../assets/images/lines.png');
+    background-position-x: -35px;
     color: var(--color-black);
     padding: 50px;
     width: fit-content;
@@ -34,7 +35,7 @@
     }
 
     &:nth-child(2) {
-        transform: rotate(0.5deg);
+        transform: rotate(0.5deg) translateX(-15%);
 
         ul {
             display: flex;
@@ -43,7 +44,7 @@
     }
 
     &:nth-child(3) {
-        transform: rotate(-5deg);
+        transform: rotate(-5deg) translateX(25%);
 
         ul {
             display: flex;
