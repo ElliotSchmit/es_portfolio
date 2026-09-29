@@ -1,0 +1,120 @@
+.contact .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+
+    .contact__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.form {
+    --input-radius: 6px;
+    --input-padding: 10px;
+
+    padding-top: var(--spacing-lg);
+
+    fieldset {
+        border: none;
+        padding: 0;
+    }
+
+    .grid {
+        display: grid;
+        gap: var(--spacing-md);
+        grid-template-columns: 1fr;
+    }
+}
+
+.form__footer {
+    padding-top: var(--spacing-md);
+}
+
+.form__confirmation {
+    display: none;
+
+    &.is-sent {
+        display: block;
+    }
+}
+
+.input__label {
+    display: block;
+    font-family: var(--font-primary);
+    font-weight: 600;
+}
+
+.input__element {
+    border-radius: var(--input-radius);
+    border: none;
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 2px rgba(110, 134, 255, 1) inset;
+    transition: all 0.3s $ease-out-expo;
+    cursor: pointer;
+    font-family: inherit;
+    outline: none;
+    padding: var(--input-padding);
+    width: 100%;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:active {
+        -webkit-box-shadow: inset 0 0 0 30px var(--color-white) !important;
+        -webkit-text-fill-color: inherit !important;
+    }
+
+    &:hover,
+    + .input__label:hover::before {
+        box-shadow: 0 0 0 4px rgba(110, 134, 255, 1) inset;
+    }
+
+    &:focus,
+    &:-webkit-autofill:focus,
+    &:focus + .input__label::before {
+        background-color: var(--color-bg-secondary);
+        box-shadow: 0 0 0 2px rgba(110, 134, 255, 1) inset;
+    }
+
+    &::placeholder {
+        color: var(--color-bg-dark);
+    }
+}
+
+/*
+   Text area
+   ========================================================================== */
+
+.textarea {
+    .input__element {
+        resize: vertical;
+        height: 150px;
+    }
+}
+
+/*
+   ERROR
+   ========================================================================== */
+
+.input__error {
+    display: none;
+    color: var(--color-primary);
+}
+
+.error {
+    .input__element,
+    &.check .input__label::before,
+    &.radio .input__label::before,
+    .check .input__label::before,
+    .radio .input__label::before {
+        box-shadow: inset 0 0 0 2px var(--color-black);
+    }
+
+    .input__label {
+        color: var(--color-black);
+    }
+
+    .input__error {
+        display: inline;
+    }
+}

@@ -318,8 +318,42 @@
     <div class="wrapper">
         <div class="contact__content">
             <h1>Contactez-moi!</h1>
+
+            <form action="" class="form" autocomplete="off" data-component="Form">
+                <div class="form__body">
+                    <fieldset class="grid">
+                        <div class="input">
+                            <label class="input__label" for="fullname">Nom</label>
+                            <input class="input__element" type="text" name="fullname" id="fullname" required />
+                        </div>
+                        <div class="input">
+                            <label class="input__label" for="email">Courriel</label>
+                            <p class="input__error">Ce format n'est pas valide</p>
+                            <input class="input__element" type="email" name="email" id="email" required />
+                        </div>
+                        <div class="input">
+                            <label class="input__label" for="subject">Sujet</label>
+                            <input class="input__element" type="text" name="subject" id="subject" required />
+                        </div>
+                        <div class="input textarea u-grid-fullwidth">
+                            <label class="input__label" for="comment">Message</label>
+                            <textarea class="input__element" name="comment" id="comment" required></textarea>
+                        </div>
+                    </fieldset>
+
+                    <div class="form__confirmation">
+                        <p>Votre formulaire a bien été envoyé.</p>
+                    </div>
+
+                    <footer class="form__footer">
+                        <button class="btn">Envoyer</button>
+                    </footer>
+                </div>
+            </form>
         </div>
-        <div class="contact__media"></div>
+        <div class="contact__media">
+            <img src="assets/images/envelope.png" alt="" />
+        </div>
     </div>
 </section>
 
