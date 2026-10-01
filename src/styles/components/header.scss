@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 2;
 }
 
 .nav-is-active .nav-primary {
@@ -29,7 +30,7 @@
     border: none;
     padding: 0;
 
-    transform: translateX(4px);
+    transform: translateX(4.5px);
 
     position: relative;
 
