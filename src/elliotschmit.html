@@ -319,11 +319,12 @@
         <div class="contact__content">
             <h1>Contactez-moi!</h1>
 
-            <form action="" class="form" autocomplete="off" data-component="Form">
+            <form action="mailto:schmit0709@gmail.com" method="post" class="form" autocomplete="off" data-component="Form">
                 <div class="form__body">
                     <fieldset class="grid">
                         <div class="input">
                             <label class="input__label" for="fullname">Nom</label>
+                            <p class="input__error">Veuillez remplir ce champ</p>
                             <input class="input__element" type="text" name="fullname" id="fullname" required />
                         </div>
                         <div class="input">
@@ -333,10 +334,12 @@
                         </div>
                         <div class="input">
                             <label class="input__label" for="subject">Sujet</label>
+                            <p class="input__error">Veuillez remplir ce champ</p>
                             <input class="input__element" type="text" name="subject" id="subject" required />
                         </div>
                         <div class="input textarea u-grid-fullwidth">
                             <label class="input__label" for="comment">Message</label>
+                            <p class="input__error">Veuillez remplir ce champ</p>
                             <textarea class="input__element" name="comment" id="comment" required></textarea>
                         </div>
                     </fieldset>

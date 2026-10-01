@@ -72,5 +72,10 @@ export default class Form {
 
   showConfirmation() {
     this.element.classList.add('is-sent');
+    const inputs = this.element.querySelectorAll('.input__element');
+    for (let i = 0; i < inputs.length; i++) {
+      const input = inputs[i];
+      input.value = '';
+    }
   }
 }
