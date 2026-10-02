@@ -1,0 +1,16 @@
+.specifications {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-lg);
+
+    h2 {
+        padding-bottom: var(--spacing-md);
+    }
+
+    .logicials {
+        display: flex;
+        align-items: flex-end;
+        gap: var(--spacing-md);
+    }
+}
