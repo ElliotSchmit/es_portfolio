@@ -28,6 +28,7 @@
 // COMPONENTS
 // Composants d'interface utilisateur spécifiques.
 // C’est là que la majorité de notre travail a lieu.
+@import 'components/apprentissages';
 @import 'components/apropos';
 @import 'components/buttons';
 @import 'components/competences';
@@ -38,7 +39,9 @@
 @import 'components/hub';
 @import 'components/icons';
 @import 'components/interets';
+@import 'components/mediassup';
 @import 'components/processus';
 @import 'components/projets';
 @import 'components/sections';
+@import 'components/steps';
 @import 'components/video';

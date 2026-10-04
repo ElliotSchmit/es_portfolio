@@ -5,6 +5,8 @@
 
     padding: 10px 20px;
     border-radius: 6px;
+
+    font-family: var(--font-secondary);
 }
 
 .btn-secondary {
@@ -20,4 +22,8 @@
     border-bottom: 3px solid var(--color-primary);
     width: fit-content;
     font-size: typo(20px);
+}
+
+.hub .btn {
+    font-family: var(--font-primary);
 }
