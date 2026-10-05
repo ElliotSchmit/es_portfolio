@@ -1,16 +1,35 @@
 .hub {
     display: flex;
     align-items: center;
+
+    height: 100vh;
 }
 
 .hub .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
+
+    @media (width < $breakpoint-sm) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+}
+
+.hub__content {
+    @media (width < $breakpoint-sm) {
+        text-align: center;
+    }
 }
 
 .hub__content .links {
     padding-top: var(--spacing-lg);
+
+    @media (width < $breakpoint-sm) {
+        padding-top: var(--spacing-md);
+    }
 
     ul {
         list-style: none;
@@ -21,6 +40,10 @@
         flex-direction: column;
         gap: var(--spacing-sm);
         width: fit-content;
+
+        @media (width < $breakpoint-sm) {
+            width: 100%;
+        }
     }
 
     a {
@@ -37,10 +60,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+
+    @media (width < $breakpoint-sm) {
+        order: -1;
+        height: 20vh;
+    }
 
     img {
         height: 100%;
         object-fit: cover;
         display: block;
+
+        @media (width < $breakpoint-md) {
+            height: auto;
+            width: 100%;
+        }
+
+        @media (width < $breakpoint-sm) {
+            height: 100%;
+            width: auto;
+        }
     }
 }

@@ -1,5 +1,9 @@
 .section {
     padding: 80px 0;
+
+    @media (width < $breakpoint-md) {
+        padding: 50px 0;
+    }
 }
 
 .section-dark {

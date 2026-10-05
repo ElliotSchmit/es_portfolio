@@ -1,12 +1,13 @@
 .btn {
     color: var(--color-white);
     background: var(--color-primary);
-    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(110, 134, 255, 1) inset;
 
     padding: 10px 20px;
     border-radius: 6px;
 
     font-family: var(--font-secondary);
+    transition: all 0.3s $ease-out-expo;
 }
 
 .btn-secondary {
@@ -26,4 +27,9 @@
 
 .hub .btn {
     font-family: var(--font-primary);
+
+    &:hover {
+        box-shadow: 0 0 0 3px rgba(110, 134, 255, 1) inset;
+        transform: translateX(5px);
+    }
 }
