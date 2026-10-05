@@ -63,7 +63,6 @@ export default class Header {
 
     document.addEventListener('click', (event) => {
       if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-        console.log('appel la fonction');
         this.onCloseNav();
       }
     });
@@ -74,7 +73,6 @@ export default class Header {
   }
 
   onCloseNav() {
-    console.log('la fonction');
     document.documentElement.classList.remove('nav-is-active');
   }
 }

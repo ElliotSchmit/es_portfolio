@@ -1,5 +1,6 @@
-import ComponentFactory from "./ComponentFactory.js";
-import Icons from "./utils/Icons.js";
+import ComponentFactory from './ComponentFactory.js';
+import Experience from './Experience.js';
+import Icons from './utils/Icons.js';
 
 class Main {
   constructor() {
@@ -7,11 +8,13 @@ class Main {
   }
 
   init() {
-    document.documentElement.classList.add("has-js");
+    document.documentElement.classList.add('has-js');
 
     new ComponentFactory();
 
     Icons.load();
+
+    new Experience();
   }
 }
 new Main();
