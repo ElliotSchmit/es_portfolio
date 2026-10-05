@@ -86,7 +86,7 @@ export default class Experience {
     this.gltfLoader.load('assets/models/camera/camera.gltf', (gltf) => {
       this.model = gltf.scene;
       this.model.scale.set(1, 1, 1);
-      this.model.rotation.y = 1.6;
+      this.model.rotation.y = 1.55;
       this.model.rotation.z = 0.3;
       this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);
