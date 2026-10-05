@@ -24,10 +24,9 @@ export default class Form {
     event.preventDefault();
 
     if (this.validate()) {
-      console.log('Yippy');
       this.showConfirmation();
     } else {
-      console.log('Nope');
+      console.log('Ne fonctionne pas');
     }
   }
 

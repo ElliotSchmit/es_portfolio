@@ -102,7 +102,6 @@ export default class YouTube {
     if ('noControls' in this.element.dataset) {
       this.options.controls = 0;
     }
-    console.log(this.options.controls);
   }
 }
 YouTube.instances = [];
