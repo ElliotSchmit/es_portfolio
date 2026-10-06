@@ -15,6 +15,12 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+    transition: all 0.3s $ease-out-expo;
+
+    &:hover .icon {
+        color: var(--color-primary);
+        transform: scale(1.5);
+    }
 
     &:nth-child(1) {
         transform: rotate(7deg) translateY(60px);
@@ -59,6 +65,26 @@
         transform: rotate(6deg);
     }
 
+    &:hover {
+        transform: rotate(0) scale(1.05);
+    }
+
+    &:nth-child(1):hover {
+        transform: rotate(0) scale(1.05) translateY(60px);
+    }
+
+    &:nth-child(2):hover {
+        transform: rotate(0) scale(1.05) translateY(30px);
+    }
+
+    &:nth-child(4):hover {
+        transform: rotate(0) scale(1.05) translateY(-30px);
+    }
+
+    &:nth-child(5):hover {
+        transform: rotate(0) scale(1.05) translateY(-60px);
+    }
+
     .card__media {
         padding-right: var(--spacing-md);
 
@@ -87,6 +113,7 @@
             top: 0;
         }
         .icon {
+            transition: all 0.3s $ease-out-expo;
             position: absolute;
             right: 0;
             bottom: 0;

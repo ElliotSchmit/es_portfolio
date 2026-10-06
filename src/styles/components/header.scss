@@ -59,9 +59,14 @@
     border: none;
     padding: 0;
 
-    transform: translateX(4.5px);
+    transform: translateX(4.5px) translateY(-6px);
+    transition: all 0.3s $ease-out-expo;
 
     position: relative;
+
+    &:hover {
+        transform: translateX(4.5px) translateY(-1px);
+    }
 
     .toggle__content {
         color: var(--color-white);
@@ -93,4 +98,13 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
+
+    a {
+        box-shadow: 0px 0px 0px 0px #fff4e9;
+        transition: all 0.3s $ease-out-expo;
+
+        &:hover {
+            box-shadow: 0px 2px 0px 0px #fff4e9;
+        }
+    }
 }

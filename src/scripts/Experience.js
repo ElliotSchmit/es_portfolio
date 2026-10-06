@@ -6,8 +6,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 export default class Experience {
   constructor() {
     this.sizes = {
-      width: window.innerWidth / 2,
-      height: window.innerHeight / 2,
+      width: window.innerWidth,
+      height: window.innerHeight,
     };
 
     this.canvas = document.querySelector('.webgl');
@@ -46,6 +46,8 @@ export default class Experience {
     const directionalLight = new THREE.DirectionalLight('#ffffff', 4);
     directionalLight.position.set(1, 2, 5);
     this.gui.add(directionalLight.position, 'x', -10, 10, 0.01);
+    this.gui.add(directionalLight.position, 'y', -10, 10, 0.01);
+    this.gui.add(directionalLight.position, 'z', -10, 10, 0.01);
     directionalLight.castShadow = true;
     directionalLight.shadow.camera.far = 10;
     directionalLight.shadow.normalBias = 0.027;
@@ -85,11 +87,14 @@ export default class Experience {
 
     this.gltfLoader.load('assets/models/camera/camera.gltf', (gltf) => {
       this.model = gltf.scene;
-      this.model.scale.set(1, 1, 1);
-      this.model.rotation.y = 1.55;
+      this.model.scale.set(30, 30, 30);
+      this.model.rotation.y = 1.28;
       this.model.rotation.z = 0.3;
+      this.model.position.x = 1.83;
+      this.model.position.y = 0.85;
+      /** this.gui.add(this.model.position, 'x', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
-      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);
+      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);method description */
 
       this.model.traverse((child) => {
         if (child.isMesh && child.material.isMeshStandardMaterial) {

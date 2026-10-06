@@ -12,6 +12,12 @@
         gap: var(--spacing-md);
         padding: var(--spacing-lg);
         padding-right: 0;
+
+        .step__number {
+            font-size: typo(64px);
+            font-weight: 100;
+            margin: 0;
+        }
     }
 
     .step__media {
