@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import * as dat from 'lil-gui';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { texture, posterize } from 'three/tsl';
+import { TextureLoader } from 'three';
+import { MeshBasicMaterial } from 'three';
 
 export default class Experience {
   constructor() {
@@ -38,12 +41,12 @@ export default class Experience {
   }
 
   createLights() {
-    const ambientLight = new THREE.AmbientLight('#ffffff', 0.8);
+    const ambientLight = new THREE.AmbientLight('#00D3FF', 0.8);
     this.scene.add(ambientLight);
 
     this.gui = new dat.GUI();
 
-    const directionalLight = new THREE.DirectionalLight('#ffffff', 4);
+    const directionalLight = new THREE.DirectionalLight('#6e86ff', 4);
     directionalLight.position.set(1, 2, 5);
     this.gui.add(directionalLight.position, 'x', -10, 10, 0.01);
     this.gui.add(directionalLight.position, 'y', -10, 10, 0.01);
@@ -77,12 +80,12 @@ export default class Experience {
   }
 
   createObjects() {
-    const geometry = new THREE.BoxGeometry(2, 2, 2, 2);
-    const material = new THREE.MeshMatcapMaterial({
-      color: '#ff0000',
+    /*const geometry = new THREE.BoxGeometry(2, 2, 2, 2);
+    const material = new THREE.ShaderMaterial({
+      color: 'assets/models/camera/textures/Bake.png',
+      posterize: 20,
     });
     this.cube = new THREE.Mesh(geometry, material); // on applique la forme et le materiel pour faire un mesh
-    this.cube.position.x = 2;
     //this.scene.add(this.cube);
 
     this.gltfLoader.load('assets/models/camera/camera.gltf', (gltf) => {
@@ -92,19 +95,42 @@ export default class Experience {
       this.model.rotation.z = 0.3;
       this.model.position.x = 1.83;
       this.model.position.y = 0.85;
+
       /** this.gui.add(this.model.position, 'x', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
-      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);method description */
+      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);method description 
 
       this.model.traverse((child) => {
         if (child.isMesh && child.material.isMeshStandardMaterial) {
           child.castShadow = true;
           child.receiveShadow = true;
         }
-      });
+      }); 
 
       this.scene.add(this.model);
-    });
+    }); */
+
+    const modelPath = 'assets/models/camera/camera.gltf';
+    const texturePath = 'assets/models/camera/textures/Bake.png';
+
+    const loader = new GLTFLoader();
+    const texture = new TextureLoader().load(texturePath);
+    loader.load(
+      modelPath,
+      function (gltf) {
+        const model = gltf.scene;
+        model.traverse((obj) => {
+          if (obj instanceof Mesh) {
+            obj.material = new MeshBasicMaterial({ map: texture });
+          }
+        });
+      },
+      undefined,
+      function (error) {
+        console.log(error);
+      },
+    );
+    //https://stackoverflow.com/questions/72527819/how-can-i-modify-a-material-of-a-gltf-model-in-three-js
   }
 
   resize() {
@@ -126,8 +152,6 @@ export default class Experience {
   animate() {
     const elapsedTime = this.clock.getElapsedTime();
     this.renderer.render(this.scene, this.camera);
-
-    this.cube.rotation.y = 0.5 * elapsedTime;
 
     window.requestAnimationFrame(this.animate.bind(this));
   }
