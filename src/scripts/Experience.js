@@ -5,6 +5,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { texture, posterize } from 'three/tsl';
 import { TextureLoader } from 'three';
 import { MeshBasicMaterial } from 'three';
+import { RenderPipeline } from 'three/webgpu';
+import { Pass } from 'three/addons/postprocessing/Pass.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 export default class Experience {
   constructor() {
@@ -33,11 +36,20 @@ export default class Experience {
     this.createRenderer();
     this.animate();
 
+    document
+      .querySelector('.js-mouse')
+      .addEventListener('mousemove', this.mousePosition.bind(this));
+
     const experiences = document.querySelectorAll('.js-experience');
     for (let i = 0; i < experiences.length; i++) {
       const element = experiences[i];
       observer.observe(element);
     }
+  }
+
+  mousePosition(event) {
+    this.mouseX = event.clientX;
+    this.mouseY = event.clientY;
   }
 
   createLights() {
@@ -48,9 +60,11 @@ export default class Experience {
 
     const directionalLight = new THREE.DirectionalLight('#6e86ff', 4);
     directionalLight.position.set(1, 2, 5);
+    /*
     this.gui.add(directionalLight.position, 'x', -10, 10, 0.01);
     this.gui.add(directionalLight.position, 'y', -10, 10, 0.01);
     this.gui.add(directionalLight.position, 'z', -10, 10, 0.01);
+    */
     directionalLight.castShadow = true;
     directionalLight.shadow.camera.far = 10;
     directionalLight.shadow.normalBias = 0.027;
@@ -72,65 +86,59 @@ export default class Experience {
       canvas: this.canvas,
       alpha: true,
     });
+    /* this.renderPipeline = new RenderPipeline(this.renderer);
+    this.defaultPass = new Pass(this.scene, this.camera);
+    this.renderPipeline.outputNode = posterize(this.defaultPass, 4.0);
+    this.renderPipeline.outputColorTransform = true;
+    this.renderPipeline.needsUpdate = true; */
+
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
+
     this.renderer.render(this.scene, this.camera);
   }
 
   createObjects() {
-    /*const geometry = new THREE.BoxGeometry(2, 2, 2, 2);
-    const material = new THREE.ShaderMaterial({
-      color: 'assets/models/camera/textures/Bake.png',
-      posterize: 20,
+    const geometry = new THREE.BoxGeometry(2, 2, 2, 2);
+    const material = new THREE.MeshBasicMaterial({
+      color: '#ff0000',
     });
     this.cube = new THREE.Mesh(geometry, material); // on applique la forme et le materiel pour faire un mesh
     //this.scene.add(this.cube);
 
-    this.gltfLoader.load('assets/models/camera/camera.gltf', (gltf) => {
+    /* const texturePath = 'assets/models/camera/textures/Bake.png';
+    const texture = new TextureLoader().load(texturePath); */
+
+    this.gltfLoader.load('assets/models/camera/polaroid.gltf', (gltf) => {
       this.model = gltf.scene;
-      this.model.scale.set(30, 30, 30);
-      this.model.rotation.y = 1.28;
-      this.model.rotation.z = 0.3;
+      this.model.scale.set(4, 4, 4);
       this.model.position.x = 1.83;
       this.model.position.y = 0.85;
+      this.model.rotation.x = 0.17;
+      this.model.rotation.y = 0.9;
+      this.model.rotation.z = 0.17;
 
-      /** this.gui.add(this.model.position, 'x', -10, 10, 0.01);
+      this.gui.add(this.model.rotation, 'x', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
-      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);method description 
+      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);
 
       this.model.traverse((child) => {
         if (child.isMesh && child.material.isMeshStandardMaterial) {
           child.castShadow = true;
           child.receiveShadow = true;
+          /* child.material = new THREE.MeshBasicMaterial({
+            map: texture,
+          }); */
         }
-      }); 
+      });
 
       this.scene.add(this.model);
-    }); */
+    });
 
-    const modelPath = 'assets/models/camera/camera.gltf';
-    const texturePath = 'assets/models/camera/textures/Bake.png';
-
-    const loader = new GLTFLoader();
-    const texture = new TextureLoader().load(texturePath);
-    loader.load(
-      modelPath,
-      function (gltf) {
-        const model = gltf.scene;
-        model.traverse((obj) => {
-          if (obj instanceof Mesh) {
-            obj.material = new MeshBasicMaterial({ map: texture });
-          }
-        });
-      },
-      undefined,
-      function (error) {
-        console.log(error);
-      },
-    );
-    //https://stackoverflow.com/questions/72527819/how-can-i-modify-a-material-of-a-gltf-model-in-three-js
+    /*
+    renderPipeline.outputNode = posterize( defaultPass, 4.0 );*/
   }
 
   resize() {
@@ -147,11 +155,17 @@ export default class Experience {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     this.renderer.render(this.scene, this.camera);
+
+    //this.renderPipeline.render();
   }
 
   animate() {
     const elapsedTime = this.clock.getElapsedTime();
     this.renderer.render(this.scene, this.camera);
+
+    //this.model.rotation.y = 0.9;
+
+    this.cube.rotation.y = 0.5 * elapsedTime;
 
     window.requestAnimationFrame(this.animate.bind(this));
   }
