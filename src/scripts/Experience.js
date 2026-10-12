@@ -50,6 +50,13 @@ export default class Experience {
   mousePosition(event) {
     this.mouseX = event.clientX;
     this.mouseY = event.clientY;
+
+    console.log(this.mouseX / 5000);
+
+    this.model.rotation.y = 0.8 + this.mouseX / 10000;
+    this.model.rotation.z = 0.1 + this.mouseY / 10000;
+
+    window.requestAnimationFrame(this.animate.bind(this));
   }
 
   createLights() {
