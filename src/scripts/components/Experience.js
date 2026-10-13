@@ -95,11 +95,11 @@ export default class Experience {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
 
-    this.renderPipeline = new RenderPipeline(this.renderer);
+    /* this.renderPipeline = new RenderPipeline(this.renderer);
     this.defaultPass = pass(this.scene, this.camera);
     this.renderPipeline.outputNode = posterize(this.defaultPass, 4.0);
     this.renderPipeline.outputColorTransform = true;
-    this.renderPipeline.needsUpdate = true;
+    this.renderPipeline.needsUpdate = true; */
 
     this.renderer.render(this.scene, this.camera);
   }
