@@ -1,5 +1,4 @@
 import ComponentFactory from './ComponentFactory.js';
-import Experience from './Experience.js';
 import Icons from './utils/Icons.js';
 
 class Main {
@@ -13,8 +12,6 @@ class Main {
     new ComponentFactory();
 
     Icons.load();
-
-    new Experience();
   }
 }
 new Main();

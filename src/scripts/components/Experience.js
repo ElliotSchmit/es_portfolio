@@ -2,15 +2,14 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import * as dat from 'lil-gui';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { texture, posterize } from 'three/tsl';
+import { texture, posterize, pass } from 'three/tsl';
 import { TextureLoader } from 'three';
 import { MeshBasicMaterial } from 'three';
 import { RenderPipeline } from 'three/webgpu';
-import { Pass } from 'three/addons/postprocessing/Pass.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 export default class Experience {
-  constructor() {
+  constructor(element) {
+    this.element = element;
     this.sizes = {
       width: window.innerWidth,
       height: window.innerHeight,
@@ -36,22 +35,20 @@ export default class Experience {
     this.createRenderer();
     this.animate();
 
-    document
-      .querySelector('.js-mouse')
-      .addEventListener('mousemove', this.mousePosition.bind(this));
-
     const experiences = document.querySelectorAll('.js-experience');
     for (let i = 0; i < experiences.length; i++) {
       const element = experiences[i];
       observer.observe(element);
     }
+
+    document
+      .querySelector('.js-mouse')
+      .addEventListener('mousemove', this.mousePosition.bind(this));
   }
 
   mousePosition(event) {
     this.mouseX = event.clientX;
     this.mouseY = event.clientY;
-
-    console.log(this.mouseX / 5000);
 
     this.model.rotation.y = 0.8 + this.mouseX / 10000;
     this.model.rotation.z = 0.1 + this.mouseY / 10000;
@@ -60,18 +57,18 @@ export default class Experience {
   }
 
   createLights() {
-    const ambientLight = new THREE.AmbientLight('#00D3FF', 0.8);
+    const ambientLight = new THREE.AmbientLight('#ffffff', 1.5);
     this.scene.add(ambientLight);
 
-    this.gui = new dat.GUI();
+    /* this.gui = new dat.GUI(); */
 
-    const directionalLight = new THREE.DirectionalLight('#6e86ff', 4);
-    directionalLight.position.set(1, 2, 5);
-    /*
-    this.gui.add(directionalLight.position, 'x', -10, 10, 0.01);
+    const directionalLight = new THREE.DirectionalLight('#6e86ff', 2);
+    directionalLight.position.set(2.13, -3.03, 4.35);
+
+    /* this.gui.add(directionalLight.position, 'x', -10, 10, 0.01);
     this.gui.add(directionalLight.position, 'y', -10, 10, 0.01);
-    this.gui.add(directionalLight.position, 'z', -10, 10, 0.01);
-    */
+    this.gui.add(directionalLight.position, 'z', -10, 10, 0.01); */
+
     directionalLight.castShadow = true;
     directionalLight.shadow.camera.far = 10;
     directionalLight.shadow.normalBias = 0.027;
@@ -93,16 +90,16 @@ export default class Experience {
       canvas: this.canvas,
       alpha: true,
     });
-    /* this.renderPipeline = new RenderPipeline(this.renderer);
-    this.defaultPass = new Pass(this.scene, this.camera);
-    this.renderPipeline.outputNode = posterize(this.defaultPass, 4.0);
-    this.renderPipeline.outputColorTransform = true;
-    this.renderPipeline.needsUpdate = true; */
 
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFShadowMap;
+
+    this.renderPipeline = new RenderPipeline(this.renderer);
+    this.defaultPass = pass(this.scene, this.camera);
+    this.renderPipeline.outputNode = posterize(this.defaultPass, 4.0);
+    this.renderPipeline.outputColorTransform = true;
+    this.renderPipeline.needsUpdate = true;
 
     this.renderer.render(this.scene, this.camera);
   }
@@ -123,14 +120,16 @@ export default class Experience {
       this.model.scale.set(4, 4, 4);
       this.model.position.x = 1.83;
       this.model.position.y = 0.85;
-      this.model.rotation.x = 0.17;
-      this.model.rotation.y = 0.9;
-      this.model.rotation.z = 0.17;
+      if (this.model.rotation) {
+        this.model.rotation.x = 0.17;
+        this.model.rotation.y = 0.9;
+        this.model.rotation.z = 0.17;
+      }
 
-      this.gui.add(this.model.rotation, 'x', -10, 10, 0.01);
+      /* this.gui.add(this.model.rotation, 'x', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);
-
+ */
       this.model.traverse((child) => {
         if (child.isMesh && child.material.isMeshStandardMaterial) {
           child.castShadow = true;

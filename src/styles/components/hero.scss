@@ -1,7 +1,6 @@
 .section.hero {
     position: relative;
     overflow: hidden;
-    padding-top: 157px;
 }
 
 .hero .wrapper {
@@ -15,6 +14,7 @@
     .hero__media img {
         width: 100%;
         height: 100%;
+        object-fit: contain;
     }
 
     .hero__media {

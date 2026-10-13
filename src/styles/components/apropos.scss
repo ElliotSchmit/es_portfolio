@@ -13,6 +13,10 @@
     object-fit: cover;
 }
 
+.apropos__media {
+    transition: all 0.3s $ease-out-expo;
+}
+
 .apropos__content {
     display: flex;
     flex-direction: column;

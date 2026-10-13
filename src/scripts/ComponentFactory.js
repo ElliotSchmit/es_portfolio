@@ -1,13 +1,17 @@
+import Experience from './components/Experience.js';
 import Form from './components/Form.js';
 import Header from './components/Header.js';
+import Rotate from './components/Rotate.js';
 import YouTube from './components/YouTube.js';
 
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
     this.componentList = {
+      Experience,
       Form,
       Header,
+      Rotate,
       YouTube,
     };
     this.init();
