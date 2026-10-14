@@ -125,8 +125,8 @@
 
 <section id="apropos" class="section apropos">
     <div class="wrapper">
-        <div class="apropos__media" data-component="Rotate">
-            <img src="assets/images/apropos.jpg" alt="" />
+        <div class="apropos__media">
+            <img src="assets/images/apropos.jpg" alt="" data-component="Rotate" />
         </div>
         <div class="apropos__content">
             <h1>À propos</h1>
@@ -174,7 +174,7 @@
             </div>
         </div>
     </div>
-    <img class="film" src="assets/images/film.jpg" alt="" />
+    <div class="film js-film" data-component="Translate"></div>
 </section>
 
 <section class="section section-dark competences">
@@ -316,28 +316,34 @@
         <div class="contact__content">
             <h1>Contactez-moi!</h1>
 
-            <form action="mailto:schmit0709@gmail.com" method="post" class="form" autocomplete="off" data-component="Form">
+            <form
+                action="https://docs.google.com/forms/d/e/1FAIpQLSdoQ4XmNtn8vEIh17JlAwLfJpIlqbCoF_1DyTlyxURo6BBm1Q/viewform?"
+                method="post"
+                class="form"
+                autocomplete="off"
+                data-component="Form"
+            >
                 <div class="form__body">
                     <fieldset class="grid">
                         <div class="input">
-                            <label class="input__label" for="fullname">Nom</label>
+                            <label class="input__label" for="entry.41364696">Nom</label>
                             <p class="input__error">Veuillez remplir ce champ</p>
-                            <input class="input__element" type="text" name="fullname" id="fullname" required />
+                            <input class="input__element" type="text" name="entry.41364696" id="entry.41364696" required />
                         </div>
                         <div class="input">
-                            <label class="input__label" for="email">Courriel</label>
+                            <label class="input__label" for="entry.737268517">Courriel</label>
                             <p class="input__error">Ce format n'est pas valide</p>
-                            <input class="input__element" type="email" name="email" id="email" required />
+                            <input class="input__element" type="email" name="entry.737268517" id="entry.737268517" required />
                         </div>
                         <div class="input">
-                            <label class="input__label" for="subject">Sujet</label>
+                            <label class="input__label" for="entry.1305039820">Sujet</label>
                             <p class="input__error">Veuillez remplir ce champ</p>
-                            <input class="input__element" type="text" name="subject" id="subject" required />
+                            <input class="input__element" type="text" name="entry.1305039820" id="entry.1305039820" required />
                         </div>
                         <div class="input textarea u-grid-fullwidth">
-                            <label class="input__label" for="comment">Message</label>
+                            <label class="input__label" for="entry.1961148675">Message</label>
                             <p class="input__error">Veuillez remplir ce champ</p>
-                            <textarea class="input__element" name="comment" id="comment" required></textarea>
+                            <textarea class="input__element" name="entry.1961148675" id="entry.1961148675" required></textarea>
                         </div>
                     </fieldset>
 
@@ -346,7 +352,7 @@
                     </div>
 
                     <footer class="form__footer">
-                        <button class="btn">Envoyer</button>
+                        <input type="submit" class="btn" value="Envoyer" />
                     </footer>
                 </div>
             </form>

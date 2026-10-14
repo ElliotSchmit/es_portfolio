@@ -2,6 +2,7 @@ import Experience from './components/Experience.js';
 import Form from './components/Form.js';
 import Header from './components/Header.js';
 import Rotate from './components/Rotate.js';
+import Translate from './components/Translate.js';
 import YouTube from './components/YouTube.js';
 
 export default class ComponentFactory {
@@ -12,6 +13,7 @@ export default class ComponentFactory {
       Form,
       Header,
       Rotate,
+      Translate,
       YouTube,
     };
     this.init();

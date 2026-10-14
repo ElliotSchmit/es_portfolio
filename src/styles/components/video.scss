@@ -13,10 +13,12 @@
 }
 
 .film {
+    transition: all 0.3s;
     width: 100%;
     top: 25%;
     z-index: -1;
-
+    height: 287px;
+    background-image: url('../assets/images/film.jpg');
     transform: rotate(10deg) scale(1.05);
 
     position: absolute;

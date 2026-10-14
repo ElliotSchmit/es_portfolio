@@ -50,8 +50,10 @@ export default class Experience {
     this.mouseX = event.clientX;
     this.mouseY = event.clientY;
 
-    this.model.rotation.y = 0.8 + this.mouseX / 10000;
-    this.model.rotation.z = 0.1 + this.mouseY / 10000;
+    if (this.model.rotation) {
+      this.model.rotation.y = 0.8 + this.mouseX / 10000;
+      this.model.rotation.z = 0.1 + this.mouseY / 10000;
+    }
 
     window.requestAnimationFrame(this.animate.bind(this));
   }
@@ -171,7 +173,7 @@ export default class Experience {
 
     //this.model.rotation.y = 0.9;
 
-    this.cube.rotation.y = 0.5 * elapsedTime;
+    //this.cube.rotation.y = 0.5 * elapsedTime;
 
     window.requestAnimationFrame(this.animate.bind(this));
   }
@@ -182,26 +184,6 @@ export default class Experience {
       const target = entry.target;
 
       if (entry.isIntersecting && this.model) {
-        gsap.to(this.model.position, {
-          duration: 1,
-          ease: 'Power2.inOut',
-          x: target.dataset.p,
-        });
-
-        gsap.to(this.model.rotation, {
-          duration: 1,
-          ease: 'Power2.inOut',
-          x: target.dataset.rX,
-          y: target.dataset.rY,
-          z: target.dataset.rZ,
-        });
-
-        const cameraZ = 'cZ' in target.dataset ? target.dataset.cZ : 8;
-        gsap.to(this.camera.position, {
-          duration: 1,
-          ease: 'Power2.inOut',
-          z: cameraZ,
-        });
       }
     }
   }
