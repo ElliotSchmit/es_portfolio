@@ -5,6 +5,12 @@
     justify-content: space-between;
 }
 
+.competences {
+    background-color: var(--color-bg-dark);
+    position: relative;
+    z-index: 1;
+}
+
 .competences .card {
     background-color: var(--color-white);
     background-image: url('../assets/images/lines.png');

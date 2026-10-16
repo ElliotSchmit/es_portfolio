@@ -10,12 +10,16 @@ import { RenderPipeline } from 'three/webgpu';
 export default class Experience {
   constructor(element) {
     this.element = element;
-    this.sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-
     this.canvas = document.querySelector('.webgl');
+    this.size = document.querySelector('.hero__media');
+    this.width = this.size.clientWidth;
+    this.height = this.size.clientHeight;
+    console.log(this.canvas);
+    /* this.sizes = {
+       width: window.innerWidth,
+      height: window.innerHeight, 
+    }; */
+    /* this.gui = new dat.GUI(); */
     this.gltfLoader = new GLTFLoader();
     this.scene = new THREE.Scene();
     this.clock = new THREE.Clock();
@@ -51,8 +55,8 @@ export default class Experience {
     this.mouseY = event.clientY;
 
     if (this.model.rotation) {
-      this.model.rotation.y = 0.8 + this.mouseX / 10000;
-      this.model.rotation.z = 0.1 + this.mouseY / 10000;
+      this.model.rotation.y = 1.15 + this.mouseX / 10000;
+      this.model.rotation.z = 0.05 + this.mouseY / 10000;
     }
 
     window.requestAnimationFrame(this.animate.bind(this));
@@ -61,8 +65,6 @@ export default class Experience {
   createLights() {
     const ambientLight = new THREE.AmbientLight('#ffffff', 1.5);
     this.scene.add(ambientLight);
-
-    /* this.gui = new dat.GUI(); */
 
     const directionalLight = new THREE.DirectionalLight('#6e86ff', 2);
     directionalLight.position.set(2.13, -3.03, 4.35);
@@ -81,9 +83,17 @@ export default class Experience {
   createCamera() {
     this.camera = new THREE.PerspectiveCamera(
       45,
-      this.sizes.width / this.sizes.height,
+
+      this.width / this.height,
     );
-    this.camera.position.z = 8;
+    this.camera.position.x = 2.13;
+    this.camera.position.y = 0.66;
+    this.camera.position.z = 5.91;
+
+    /* this.gui.add(this.camera.position, 'x', -10, 10, 0.01);
+    this.gui.add(this.camera.position, 'y', -10, 10, 0.01);
+    this.gui.add(this.camera.position, 'z', -10, 30, 0.01); */
+
     this.scene.add(this.camera);
   }
 
@@ -93,7 +103,7 @@ export default class Experience {
       alpha: true,
     });
 
-    this.renderer.setSize(this.sizes.width, this.sizes.height);
+    this.renderer.setSize(this.width, this.height, false);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
 
@@ -124,14 +134,14 @@ export default class Experience {
       this.model.position.y = 0.85;
       if (this.model.rotation) {
         this.model.rotation.x = 0.17;
-        this.model.rotation.y = 0.9;
-        this.model.rotation.z = 0.17;
+        this.model.rotation.y = 1.15;
+        this.model.rotation.z = 0.05;
       }
 
       /* this.gui.add(this.model.rotation, 'x', -10, 10, 0.01);
       this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
-      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01);
- */
+      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01); */
+
       this.model.traverse((child) => {
         if (child.isMesh && child.material.isMeshStandardMaterial) {
           child.castShadow = true;
@@ -150,21 +160,27 @@ export default class Experience {
   }
 
   resize() {
-    // Update sizes
+    this.canvas = this.renderer.domElement;
+
+    this.width = this.size.clientWidth;
+    this.height = this.size.clientHeight;
+
+    this.renderer.setSize(this.width, this.height, false);
+    this.camera.aspect = this.width / this.height;
+    this.camera.updateProjectionMatrix();
+    /* // Update sizes
     this.sizes.width = window.innerWidth;
     this.sizes.height = window.innerHeight;
 
     // Update camera
     this.camera.aspect = this.sizes.width / this.sizes.height;
-    this.camera.updateProjectionMatrix();
+    this.camera.updateProjectionMatrix();*/
 
     // Update renderer
-    this.renderer.setSize(this.sizes.width, this.sizes.height);
+    this.renderer.setSize(this.width, this.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     this.renderer.render(this.scene, this.camera);
-
-    //this.renderPipeline.render();
   }
 
   animate() {

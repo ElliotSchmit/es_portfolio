@@ -5,25 +5,33 @@
 
 .hero .wrapper {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
 
     align-items: center;
-    height: 70vh;
+
+    @media (width < $breakpoint-lg) {
+        grid-template-columns: 2fr 3fr;
+    }
 
     @media (width < $breakpoint-md) {
         grid-template-columns: 1fr;
     }
 
-    .hero__media img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+    .hero__content {
+        @media (width < $breakpoint-md) {
+            text-align: center;
+        }
     }
 
     .hero__media {
-        height: 100%;
+        height: 70vh;
         width: 100%;
+
+        @media (width < $breakpoint-md) {
+            order: -1;
+            height: 40vh;
+        }
     }
 }
 

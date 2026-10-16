@@ -5,6 +5,8 @@
 .presentation {
     position: relative;
     overflow: hidden;
+    background-color: var(--color-white);
+    z-index: 1;
 
     h1 {
         text-align: center;
