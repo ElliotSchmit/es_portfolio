@@ -11,6 +11,10 @@
     align-items: center;
     height: 70vh;
 
+    @media (width < $breakpoint-md) {
+        grid-template-columns: 1fr;
+    }
+
     .hero__media img {
         width: 100%;
         height: 100%;

@@ -237,7 +237,7 @@
         </div>
     </div>
 
-    <div class="oeuvres-grid">
+    <div class="oeuvres-grid js-gallery" data-component="Gallery">
         <div class="oeuvres-col">
             <div class="oeuvre">
                 <img src="assets/images/chandelles.jpg" alt="Chandelles en mosaïques" />
@@ -260,7 +260,8 @@
                 <p>Couture de l'extérieur d'un sac en tissus recyclé</p>
             </div>
         </div>
-        <div class="oeuvres-col">
+
+        <div class="oeuvres-col js-inverted">
             <div class="oeuvre">
                 <img src="assets/images/abre.jpg" alt="Arbre, eau et maison" />
                 <p>Peinture à l'acrylique sur carton en supperposition</p>
@@ -282,6 +283,7 @@
                 <p>Construction d'une roche excalibur en mousse de plastique recyclé</p>
             </div>
         </div>
+        <div></div>
         <div class="oeuvres-col">
             <div class="oeuvre">
                 <img src="assets/images/abstraite.jpg" alt="" />
@@ -316,44 +318,37 @@
         <div class="contact__content">
             <h1>Contactez-moi!</h1>
 
-            <form
-                action="https://docs.google.com/forms/d/e/1FAIpQLSdoQ4XmNtn8vEIh17JlAwLfJpIlqbCoF_1DyTlyxURo6BBm1Q/formResponse?"
-                method="post"
-                class="form"
-                autocomplete="off"
-                data-component="Form"
-            >
+            <form action="https://formspree.io/f/mrperbyq" method="POST" class="form" autocomplete="off" data-component="Form">
                 <div class="form__body">
                     <fieldset class="grid">
                         <div class="input">
-                            <label class="input__label" for="entry.41364696">Nom</label>
+                            <label class="input__label" for="fullname">Nom</label>
                             <p class="input__error">Veuillez remplir ce champ</p>
-                            <input class="input__element" type="text" name="entry.41364696" id="entry.41364696" required />
+                            <input class="input__element" type="text" name="fullname" id="fullname" required />
                         </div>
                         <div class="input">
-                            <label class="input__label" for="entry.737268517">Courriel</label>
+                            <label class="input__label" for="email">Courriel</label>
                             <p class="input__error">Ce format n'est pas valide</p>
-                            <input class="input__element" type="email" name="entry.737268517" id="entry.737268517" required />
+                            <input class="input__element" type="email" name="email" id="email" required />
                         </div>
                         <div class="input">
-                            <label class="input__label" for="entry.1305039820">Sujet</label>
+                            <label class="input__label" for="subject">Sujet</label>
                             <p class="input__error">Veuillez remplir ce champ</p>
-                            <input class="input__element" type="text" name="entry.1305039820" id="entry.1305039820" required />
+                            <input class="input__element" type="text" name="subject" id="subject" required />
                         </div>
                         <div class="input textarea u-grid-fullwidth">
-                            <label class="input__label" for="entry.1961148675">Message</label>
+                            <label class="input__label" for="message">Message</label>
                             <p class="input__error">Veuillez remplir ce champ</p>
-                            <textarea class="input__element" name="entry.1961148675" id="entry.1961148675" required></textarea>
+                            <textarea class="input__element" name="message" id="message" required></textarea>
                         </div>
+                        <button type="submit" class="btn">Envoyer</button>
                     </fieldset>
 
                     <div class="form__confirmation">
                         <p>Votre formulaire a bien été envoyé.</p>
                     </div>
 
-                    <footer class="form__footer">
-                        <input type="submit" class="btn" value="Envoyer" />
-                    </footer>
+                    <footer class="form__footer"></footer>
                 </div>
             </form>
         </div>
