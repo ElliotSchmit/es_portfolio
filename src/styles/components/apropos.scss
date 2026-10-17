@@ -1,8 +1,16 @@
+/* ==========================================================================
+   apropos / component
+   ========================================================================== */
+
 .apropos .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: var(--spacing-lg);
+
+    @media (width < $breakpoint-sm) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .apropos__media img {
@@ -15,12 +23,22 @@
 
 .apropos__media {
     transition: all 0.3s $ease-out-expo;
+
+    @media (width < $breakpoint-sm) {
+        width: 90%;
+        justify-self: center;
+    }
 }
 
 .apropos__content {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+
+    @media (width < $breakpoint-sm) {
+        align-items: center;
+        text-align: center;
+    }
 
     p {
         margin: 0;

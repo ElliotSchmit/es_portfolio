@@ -16,14 +16,21 @@
 
 .film {
     transition: all 0.3s;
-    width: 100%;
+    width: 110%;
     top: 25%;
+    left: -20px;
     z-index: -1;
     height: 287px;
     background-image: url('../assets/images/film.jpg');
+    background-size: contain;
+    background-repeat: repeat-x;
     transform: rotate(10deg) scale(1.05);
 
     position: absolute;
+
+    @media (width < $breakpoint-md) {
+        height: 150px;
+    }
 }
 
 .video {

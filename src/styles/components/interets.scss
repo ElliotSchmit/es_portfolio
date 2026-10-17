@@ -1,3 +1,7 @@
+/* ==========================================================================
+   interets / component
+   ========================================================================== */
+
 .section.interets__content {
     position: sticky;
     z-index: 2;
@@ -30,6 +34,23 @@
     gap: var(--spacing-md);
     position: relative;
     overflow: hidden;
+
+    @media (width < $breakpoint-md) {
+        gap: var(--spacing-sm);
+    }
+
+    @media (width < $breakpoint-sm) {
+        display: none;
+    }
+}
+
+.oeuvres-grid-mobile {
+    display: none;
+
+    @media (width < $breakpoint-sm) {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
 }
 
 .oeuvres-col {
@@ -58,8 +79,8 @@
 
         background: linear-gradient(
             0deg,
-            rgba(34, 32, 31, 1) 0%,
-            rgba(34, 32, 31, 0) 100%
+            rgba(58, 55, 53, 1) 0%,
+            rgba(58, 55, 53, 0) 100%
         );
     }
 
@@ -68,5 +89,9 @@
         height: 100%;
         object-fit: cover;
         display: block;
+
+        @media (width < $breakpoint-sm) {
+            aspect-ratio: 1/1;
+        }
     }
 }
