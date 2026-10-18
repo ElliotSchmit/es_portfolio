@@ -26,6 +26,10 @@
     left: 0;
     width: 100%;
     z-index: 1;
+
+    @media (width < $breakpoint-sm) {
+        display: none;
+    }
 }
 
 .oeuvres-grid {
@@ -33,7 +37,6 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--spacing-md);
     position: relative;
-    overflow: hidden;
 
     @media (width < $breakpoint-md) {
         gap: var(--spacing-sm);
@@ -48,8 +51,8 @@
     display: none;
 
     @media (width < $breakpoint-sm) {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
+        display: flex;
+        width: 400vw;
     }
 }
 
@@ -64,6 +67,14 @@
         width: 33.33%;
         padding: 0 12px;
     }
+}
+
+.oeuvres-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
 }
 
 .oeuvre {
@@ -89,9 +100,5 @@
         height: 100%;
         object-fit: cover;
         display: block;
-
-        @media (width < $breakpoint-sm) {
-            aspect-ratio: 1/1;
-        }
     }
 }

@@ -11,26 +11,53 @@ export default class Gallery {
   }
 
   init() {
-    //const delay = 0.3;
-    const gallery = this.element.querySelector('.js-inverted');
-    const tl = gsap.timeline({
-      defaults: {
-        ease: 'power1.inOut',
-      },
-      scrollTrigger: {
-        trigger: '.js-inverted',
-        start: 'bottom bottom',
-        end: '215%',
-        pin: true,
-        scrub: true,
-        /* markers: true, */
-      },
-    });
+    this.desktop();
+    this.mobile();
+  }
 
-    tl.to(gallery, {
-      translateY: '0%',
-    }).to(gallery, {
-      translateY: '65%',
-    });
+  desktop() {
+    if (this.element.classList.contains('js-gallery')) {
+      console.log(this.element);
+      const gallery = this.element.querySelector('.js-inverted');
+      const tl = gsap.timeline({
+        defaults: {
+          ease: 'power1.inOut',
+        },
+        scrollTrigger: {
+          trigger: '.js-inverted',
+          start: 'bottom bottom',
+          end: '215%',
+          pin: true,
+          scrub: true,
+          /* markers: true, */
+        },
+      });
+
+      tl.to(gallery, {
+        translateY: '0%',
+      }).to(gallery, {
+        translateY: '65%',
+      });
+    }
+  }
+
+  mobile() {
+    if (this.element.classList.contains('js-gallery-mobile')) {
+      const panels = this.element.querySelectorAll('.js-oeuvres');
+      const nbPanels = panels.length - 1;
+      const buffer = 200;
+
+      gsap.to(panels, {
+        xPercent: -100 * nbPanels,
+        ease: 'none',
+        scrollTrigger: {
+          pin: true,
+          trigger: this.element,
+          scrub: 1,
+          snap: 1 / nbPanels,
+          end: () => '+=' + (this.element.offsetWidth + buffer),
+        },
+      });
+    }
   }
 }
