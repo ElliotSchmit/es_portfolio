@@ -37,6 +37,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--spacing-md);
     position: relative;
+    overflow: hidden;
 
     @media (width < $breakpoint-md) {
         gap: var(--spacing-sm);

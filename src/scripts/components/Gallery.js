@@ -17,7 +17,6 @@ export default class Gallery {
 
   desktop() {
     if (this.element.classList.contains('js-gallery')) {
-      console.log(this.element);
       const gallery = this.element.querySelector('.js-inverted');
       const tl = gsap.timeline({
         defaults: {
@@ -36,7 +35,7 @@ export default class Gallery {
       tl.to(gallery, {
         translateY: '0%',
       }).to(gallery, {
-        translateY: '65%',
+        translateY: '90%',
       });
     }
   }
@@ -54,7 +53,7 @@ export default class Gallery {
           pin: true,
           trigger: this.element,
           scrub: 1,
-          snap: 1 / nbPanels,
+          snap: 0.5 / nbPanels,
           end: () => '+=' + (this.element.offsetWidth + buffer),
         },
       });

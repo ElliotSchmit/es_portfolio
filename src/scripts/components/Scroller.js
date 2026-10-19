@@ -4,133 +4,114 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother.js';
 
 export default class Scroller {
   constructor(element) {
-    console.clear();
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     this.options = {
       hasSkew: false,
       hasPinItems: false,
     };
     this.element = element;
+    this.slides = gsap.utils.toArray('.pinned');
 
     this.init();
   }
 
   init() {
-    const slides = gsap.utils.toArray('.pinned');
-    /* const images = this.element.querySelector(`.js-imgs`); */
-    // Pause between slides
-    const delay = 0.5;
-    const tl = gsap.timeline({
-      defaults: {
-        ease: 'power1.inOut',
-        transformOrigin: 'center center -150px',
-      },
-      scrollTrigger: {
-        trigger: '.step',
-        start: 'center center',
-        end: '+=' + (slides.length - 1) * 50 + '%',
-        pin: true,
-        scrub: true,
-        markers: true,
-      },
-    });
+    this.text();
+    this.images();
+  }
 
-    gsap.set(
-      slides,
-      {
+  text() {
+    if (this.element.querySelector('.js-step')) {
+      const delay = 0.5;
+      const tl = gsap.timeline({
+        defaults: {
+          ease: 'power1.inOut',
+          transformOrigin: 'center center -150px',
+        },
+        scrollTrigger: {
+          trigger: '.js-step',
+          start: 'center center',
+          end: '+=' + (this.slides.length - 1) * 50 + '%',
+          pin: true,
+          scrub: true,
+          markers: true,
+        },
+      });
+
+      gsap.set(this.slides, {
         translateY: (i) => (i ? 422 : 0),
         transformOrigin: 'center center -150px',
-      },
-      /* images,
-      {
-        translateY: (i) => (i ? 500 : 0),
-        translateX: (i) => (i ? 500 : 0),
+      });
+
+      this.slides.forEach((slide, i) => {
+        const nextSlide = this.slides[i + 1];
+        if (!nextSlide) return;
+        tl.to(
+          slide,
+          {
+            translateY: -422,
+            onComplete: () => gsap.set(slide, { translateY: 422 }),
+          },
+
+          '+=' + delay,
+        ).to(
+          nextSlide,
+          {
+            translateY: 0,
+          },
+          '<',
+        );
+      });
+      // Keep final slide on the screen
+      tl.to({}, { duration: delay });
+    }
+  }
+
+  images() {
+    if (this.element.querySelector('.js-imgs')) {
+      const images = gsap.utils.toArray('.js-img');
+      const delay = 0.5;
+      const tl = gsap.timeline({
+        defaults: {
+          ease: 'power1.inOut',
+          transformOrigin: 'center center -150px',
+        },
+        scrollTrigger: {
+          trigger: '.js-imgs',
+          start: 'top top',
+          end: '+=' + (this.slides.length - 1) * 50 + '%',
+          pin: true,
+          scrub: true,
+          markers: true,
+        },
+      });
+
+      gsap.set(images, {
+        translateY: (i) => (i ? 0 : 0),
         transformOrigin: 'center center -150px',
-      }, */
-    );
+      });
 
-    slides.forEach((slide, i) => {
-      const nextSlide = slides[i + 1];
-      /* const nextImage = this.element.querySelector(`.js-img-${i + 2}`);
-      const image = this.element.querySelector(`.js-img-${i + 1}`); */
-      if (!nextSlide) return;
-      tl.to(
-        /* image,
-        {
-          translateX: 0,
-          translateY: 0,
-          onComplete: () =>
-            gsap.set(image, { translateX: 500, translateY: -500 }),
-        }, */
-        slide,
-        {
-          translateY: -422,
-          onComplete: () => gsap.set(slide, { translateY: 422 }),
-        },
+      images.forEach((image, i) => {
+        const nextImage = images[i + 1];
+        if (!nextImage) return;
+        tl.to(
+          image,
+          {
+            translateY: 0,
+            onComplete: () => gsap.set(image, { translateY: -500 }),
+          },
 
-        '+=' + delay,
-      ).to(
-        /* nextImage,
-        {
-          translateX: 0,
-          translateY: 0,
-        }, */
-        nextSlide,
-        {
-          translateY: 0,
-        },
-        '<',
-      );
-    });
-    // Keep final slide on the screen
-    tl.to({}, { duration: delay });
-
-    /* const images = gsap.utils.toArray('.js-imgs');
-    const im = gsap.timeline({
-      defaults: {
-        ease: 'power1.inOut',
-        transformOrigin: 'center center -150px',
-      },
-      scrollTrigger: {
-        trigger: '.step',
-        start: 'center center',
-        end: '+=' + (images.length - 1) * 50 + '%',
-        pin: true,
-        scrub: true,
-        markers: true,
-      },
-    });
-
-    gsap.set(images, {
-      translateX: (i) => (i ? 422 : 0),
-      transformOrigin: 'center center -150px',
-    });
-
-    gsap.set(images, {
-      translateX: (i) => (i ? 422 : 0),
-      transformOrigin: 'center center -150px',
-    });
-
-    images.forEach((img, i) => {
-      const nextImages = images[i + 1];
-      if (!nextImages) return;
-      im.to(
-        img,
-        {
-          translateX: -422,
-          onComplete: () => gsap.set(img, { translateX: 422 }),
-        },
-
-        '+=' + delay,
-      ).to(
-        nextImages,
-        {
-          translateY: 0,
-        },
-        '<',
-      );
-    });
-    // Keep final slide on the screen
-    im.to({}, { duration: delay }); */
+          '+=' + delay,
+        ).to(
+          nextImage,
+          {
+            translateY: 0,
+          },
+          '<',
+        );
+      });
+      // Keep final slide on the screen
+      tl.to({}, { duration: delay });
+    }
   }
 }
