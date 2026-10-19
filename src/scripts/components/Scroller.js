@@ -79,10 +79,10 @@ export default class Scroller {
 
   imageUpdate() {
     const images = document.querySelectorAll('.js-img');
-    console.log(images.length);
 
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
+      console.log(`${i}, ${this.slideNumber}`);
       if (i < this.slideNumber) {
         console.log(image);
         image.style.translate = '50% -150%';

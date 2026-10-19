@@ -2,6 +2,7 @@ import Experience from './components/Experience.js';
 import Form from './components/Form.js';
 import Gallery from './components/Gallery.js';
 import Header from './components/Header.js';
+import Modale from './components/Modale.js';
 import Rotate from './components/Rotate.js';
 import Scroller from './components/Scroller.js';
 import Translate from './components/Translate.js';
@@ -15,6 +16,7 @@ export default class ComponentFactory {
       Form,
       Gallery,
       Header,
+      Modale,
       Rotate,
       Scroller,
       Translate,
