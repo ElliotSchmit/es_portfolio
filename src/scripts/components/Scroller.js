@@ -11,107 +11,86 @@ export default class Scroller {
     };
     this.element = element;
     this.slides = gsap.utils.toArray('.pinned');
+    this.slideNumber = 0;
 
     this.init();
   }
 
   init() {
     this.text();
-    this.images();
   }
 
   text() {
-    if (this.element.querySelector('.js-step')) {
-      const delay = 0.5;
-      const tl = gsap.timeline({
-        defaults: {
-          ease: 'power1.inOut',
-          transformOrigin: 'center center -150px',
-        },
-        scrollTrigger: {
-          trigger: '.js-step',
-          start: 'center center',
-          end: '+=' + (this.slides.length - 1) * 50 + '%',
-          pin: true,
-          scrub: true,
-          markers: true,
-        },
-      });
-
-      gsap.set(this.slides, {
-        translateY: (i) => (i ? 422 : 0),
+    const delay = 0.5;
+    const tl = gsap.timeline({
+      defaults: {
+        ease: 'power1.inOut',
         transformOrigin: 'center center -150px',
-      });
+      },
+      scrollTrigger: {
+        trigger: '.js-step',
+        start: 'center center',
+        end: '+=' + (this.slides.length - 1) * 50 + '%',
+        pin: true,
+        scrub: true,
+      },
+    });
 
-      this.slides.forEach((slide, i) => {
-        const nextSlide = this.slides[i + 1];
-        if (!nextSlide) return;
-        tl.to(
-          slide,
-          {
-            translateY: -422,
-            onComplete: () => gsap.set(slide, { translateY: 422 }),
-          },
+    gsap.set(this.slides, {
+      translateY: (i) => (i ? 422 : 0),
+      transformOrigin: 'center center -150px',
+    });
 
-          '+=' + delay,
-        ).to(
-          nextSlide,
-          {
-            translateY: 0,
-          },
-          '<',
-        );
-      });
-      // Keep final slide on the screen
-      tl.to({}, { duration: delay });
-    }
+    this.slides.forEach((slide, i) => {
+      const nextSlide = this.slides[i + 1];
+
+      if (!nextSlide) return;
+
+      tl.to(
+        slide,
+        {
+          translateY: -422,
+          onComplete: this.complete.bind(this),
+          onReverseComplete: this.reverseComplete.bind(this),
+        },
+
+        '+=' + delay,
+      ).to(
+        nextSlide,
+        {
+          translateY: 0,
+        },
+        '<',
+      );
+    });
+    // Keep final slide on the screen
+    tl.to({}, { duration: delay });
   }
 
-  images() {
-    if (this.element.querySelector('.js-imgs')) {
-      const images = gsap.utils.toArray('.js-img');
-      const delay = 0.5;
-      const tl = gsap.timeline({
-        defaults: {
-          ease: 'power1.inOut',
-          transformOrigin: 'center center -150px',
-        },
-        scrollTrigger: {
-          trigger: '.js-imgs',
-          start: 'top top',
-          end: '+=' + (this.slides.length - 1) * 50 + '%',
-          pin: true,
-          scrub: true,
-          markers: true,
-        },
-      });
+  complete(slide) {
+    this.slideNumber++;
+    this.imageUpdate();
+  }
 
-      gsap.set(images, {
-        translateY: (i) => (i ? 0 : 0),
-        transformOrigin: 'center center -150px',
-      });
+  reverseComplete() {
+    this.slideNumber--;
+    this.imageUpdate();
+  }
 
-      images.forEach((image, i) => {
-        const nextImage = images[i + 1];
-        if (!nextImage) return;
-        tl.to(
-          image,
-          {
-            translateY: 0,
-            onComplete: () => gsap.set(image, { translateY: -500 }),
-          },
+  imageUpdate() {
+    const images = document.querySelectorAll('.js-img');
+    console.log(images.length);
 
-          '+=' + delay,
-        ).to(
-          nextImage,
-          {
-            translateY: 0,
-          },
-          '<',
-        );
-      });
-      // Keep final slide on the screen
-      tl.to({}, { duration: delay });
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      if (i < this.slideNumber) {
+        console.log(image);
+        image.style.translate = '50% -150%';
+        image.style.rotate = '15deg';
+      } else {
+        image.style.translate = '0px 0px';
+        image.style.rotate = 'none';
+      }
     }
   }
 }

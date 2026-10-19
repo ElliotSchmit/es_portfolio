@@ -57,6 +57,7 @@
         z-index: 5;
         padding: 13px;
         background-color: var(--color-bg-secondary);
+        transition: all 1.5s $ease-out-expo;
 
         &:nth-child(2) {
             transform: rotate(3.4deg);

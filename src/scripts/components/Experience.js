@@ -2,10 +2,8 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import * as dat from 'lil-gui';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { texture, posterize, pass } from 'three/tsl';
-import { TextureLoader } from 'three';
-import { MeshBasicMaterial } from 'three';
-import { RenderPipeline } from 'three/webgpu';
+//import { TextureLoader } from 'three';
+//import { MeshBasicMaterial } from 'three';
 
 export default class Experience {
   constructor(element) {
@@ -14,12 +12,7 @@ export default class Experience {
     this.size = document.querySelector('.hero__media');
     this.width = this.size.clientWidth;
     this.height = this.size.clientHeight;
-    console.log(this.canvas);
-    /* this.sizes = {
-       width: window.innerWidth,
-      height: window.innerHeight, 
-    }; */
-    /* this.gui = new dat.GUI(); */
+
     this.gltfLoader = new GLTFLoader();
     this.scene = new THREE.Scene();
     this.clock = new THREE.Clock();
@@ -69,10 +62,6 @@ export default class Experience {
     const directionalLight = new THREE.DirectionalLight('#6e86ff', 2);
     directionalLight.position.set(2.13, -3.03, 4.35);
 
-    /* this.gui.add(directionalLight.position, 'x', -10, 10, 0.01);
-    this.gui.add(directionalLight.position, 'y', -10, 10, 0.01);
-    this.gui.add(directionalLight.position, 'z', -10, 10, 0.01); */
-
     directionalLight.castShadow = true;
     directionalLight.shadow.camera.far = 10;
     directionalLight.shadow.normalBias = 0.027;
@@ -90,10 +79,6 @@ export default class Experience {
     this.camera.position.y = 0.66;
     this.camera.position.z = 5.91;
 
-    /* this.gui.add(this.camera.position, 'x', -10, 10, 0.01);
-    this.gui.add(this.camera.position, 'y', -10, 10, 0.01);
-    this.gui.add(this.camera.position, 'z', -10, 30, 0.01); */
-
     this.scene.add(this.camera);
   }
 
@@ -107,12 +92,6 @@ export default class Experience {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
 
-    /* this.renderPipeline = new RenderPipeline(this.renderer);
-    this.defaultPass = pass(this.scene, this.camera);
-    this.renderPipeline.outputNode = posterize(this.defaultPass, 4.0);
-    this.renderPipeline.outputColorTransform = true;
-    this.renderPipeline.needsUpdate = true; */
-
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -121,11 +100,7 @@ export default class Experience {
     const material = new THREE.MeshBasicMaterial({
       color: '#ff0000',
     });
-    this.cube = new THREE.Mesh(geometry, material); // on applique la forme et le materiel pour faire un mesh
-    //this.scene.add(this.cube);
-
-    /* const texturePath = 'assets/models/camera/textures/Bake.png';
-    const texture = new TextureLoader().load(texturePath); */
+    this.cube = new THREE.Mesh(geometry, material);
 
     this.gltfLoader.load('assets/models/camera/polaroid.gltf', (gltf) => {
       this.model = gltf.scene;
@@ -138,25 +113,15 @@ export default class Experience {
         this.model.rotation.z = 0.05;
       }
 
-      /* this.gui.add(this.model.rotation, 'x', -10, 10, 0.01);
-      this.gui.add(this.model.rotation, 'y', -10, 10, 0.01);
-      this.gui.add(this.model.rotation, 'z', -10, 10, 0.01); */
-
       this.model.traverse((child) => {
         if (child.isMesh && child.material.isMeshStandardMaterial) {
           child.castShadow = true;
           child.receiveShadow = true;
-          /* child.material = new THREE.MeshBasicMaterial({
-            map: texture,
-          }); */
         }
       });
 
       this.scene.add(this.model);
     });
-
-    /*
-    renderPipeline.outputNode = posterize( defaultPass, 4.0 );*/
   }
 
   resize() {
@@ -168,13 +133,6 @@ export default class Experience {
     this.renderer.setSize(this.width, this.height, false);
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
-    /* // Update sizes
-    this.sizes.width = window.innerWidth;
-    this.sizes.height = window.innerHeight;
-
-    // Update camera
-    this.camera.aspect = this.sizes.width / this.sizes.height;
-    this.camera.updateProjectionMatrix();*/
 
     // Update renderer
     this.renderer.setSize(this.width, this.height);
@@ -186,10 +144,6 @@ export default class Experience {
   animate() {
     const elapsedTime = this.clock.getElapsedTime();
     this.renderer.render(this.scene, this.camera);
-
-    //this.model.rotation.y = 0.9;
-
-    //this.cube.rotation.y = 0.5 * elapsedTime;
 
     window.requestAnimationFrame(this.animate.bind(this));
   }
