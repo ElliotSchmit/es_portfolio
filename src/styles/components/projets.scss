@@ -117,6 +117,7 @@
 
         @media (width < $breakpoint-sm) {
             padding-right: 0;
+            aspect-ratio: 1/1;
         }
 
         img {
@@ -126,7 +127,7 @@
 
             aspect-ratio: 8/9;
             @media (width < $breakpoint-sm) {
-                aspect-ratio: 5/3;
+                aspect-ratio: 1/1;
             }
         }
     }

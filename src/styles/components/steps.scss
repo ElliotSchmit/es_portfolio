@@ -4,6 +4,11 @@
 
 .steps {
     padding: 25vh 0;
+    overflow: hidden;
+
+    @media (width < $breakpoint-md) {
+        padding: 50vh 0 25vh;
+    }
 }
 
 .steps .wrapper {
@@ -24,6 +29,10 @@
         padding-right: var(--spacing-md);
         width: 50%;
 
+        @media (width < $breakpoint-md) {
+            width: 100%;
+        }
+
         .step__number {
             font-size: typo(64px);
             font-weight: 100;
@@ -34,17 +43,36 @@
     .step {
         position: relative;
         background-color: var(--color-bg-dark);
-        min-height: 422px;
+        min-height: 450px;
+        margin: auto 0;
         width: 100%;
     }
 
     .step__media {
         position: absolute;
         right: 0;
-        top: center;
+        top: -7%;
 
         height: 125%;
         width: 50%;
+
+        @media (width < $breakpoint-md) {
+            width: 65%;
+            left: 20%;
+            top: -60%;
+        }
+
+        @media (width < $breakpoint-sm) {
+            width: 75%;
+            left: 15%;
+            top: -60%;
+        }
+
+        @media (width < $breakpoint-xs) {
+            width: 90%;
+            left: 5%;
+            top: -50%;
+        }
     }
 
     .step__media img {

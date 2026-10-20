@@ -12,12 +12,21 @@ export default class Scroller {
     this.element = element;
     this.slides = gsap.utils.toArray('.pinned');
     this.slideNumber = 0;
+    this.width = document.querySelector('body').clientWidth;
 
     this.init();
   }
 
   init() {
+    this.setup();
     this.text();
+  }
+
+  setup() {
+    this.center = 'center';
+    if (this.width <= 1024) {
+      this.center = '10%';
+    }
   }
 
   text() {
@@ -29,16 +38,15 @@ export default class Scroller {
       },
       scrollTrigger: {
         trigger: '.js-step',
-        start: 'center center',
+        start: this.center + ' center',
         end: '+=' + (this.slides.length - 1) * 50 + '%',
         pin: true,
         scrub: true,
       },
     });
 
-    console.log(this.slides[0].offsetHeight);
     document.querySelector('.js-step').style.height =
-      this.slides.offsetHeight + 'px';
+      this.slides[0].offsetHeight + 'px';
 
     gsap.set(this.slides, {
       translateY: (i) => (i ? this.slides[0].offsetHeight : 0),

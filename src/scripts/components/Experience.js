@@ -21,11 +21,15 @@ export default class Experience {
   }
 
   init() {
+    const observes = new IntersectionObserver(this.watch.bind(this), {
+      rootMargin: '0px 0px 0px 0px',
+    });
+    observes.observe(this.element);
+
     window.addEventListener('resize', this.resize.bind(this));
     const observer = new IntersectionObserver(this.observe.bind(this), {
       rootMargin: '-45% 0px',
     });
-
     this.createCamera();
     this.createLights();
     this.createObjects();
@@ -37,10 +41,18 @@ export default class Experience {
       const element = experiences[i];
       observer.observe(element);
     }
+  }
 
-    document
-      .querySelector('.js-mouse')
-      .addEventListener('mousemove', this.mousePosition.bind(this));
+  watch(entries) {
+    if (entries[0].isIntersecting) {
+      document
+        .querySelector('.js-mouse')
+        .addEventListener('mousemove', this.mousePosition.bind(this));
+    } else {
+      document
+        .querySelector('.js-mouse')
+        .removeEventListener('mousemove', this.mousePosition.bind(this));
+    }
   }
 
   mousePosition(event) {
