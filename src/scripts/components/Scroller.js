@@ -85,7 +85,7 @@ export default class Scroller {
       console.log(`${i}, ${this.slideNumber}`);
       if (i < this.slideNumber) {
         console.log(image);
-        image.style.translate = '50% -150%';
+        image.style.translate = '55% -160%';
         image.style.rotate = '15deg';
       } else {
         image.style.translate = '0px 0px';
