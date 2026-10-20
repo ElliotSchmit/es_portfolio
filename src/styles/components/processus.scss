@@ -8,6 +8,10 @@
     gap: var(--spacing-md);
     padding-top: var(--spacing-lg);
 
+    @media (width < $breakpoint-md) {
+        grid-template-columns: 1fr;
+    }
+
     h2 {
         padding-bottom: var(--spacing-md);
     }

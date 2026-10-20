@@ -79,6 +79,15 @@
         gap: var(--spacing-md);
         width: 50%;
 
+        @media (width < $breakpoint-sm) {
+            width: 75%;
+        }
+
+        @media (width < $breakpoint-xs) {
+            width: 100%;
+            align-items: center;
+        }
+
         p {
             margin: 0;
         }
@@ -94,6 +103,7 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+        object-position: 50% 100%;
         display: block;
     }
 }

@@ -36,8 +36,12 @@ export default class Scroller {
       },
     });
 
+    console.log(this.slides[0].offsetHeight);
+    document.querySelector('.js-step').style.height =
+      this.slides.offsetHeight + 'px';
+
     gsap.set(this.slides, {
-      translateY: (i) => (i ? 422 : 0),
+      translateY: (i) => (i ? this.slides[0].offsetHeight : 0),
       transformOrigin: 'center center -150px',
     });
 
@@ -49,7 +53,7 @@ export default class Scroller {
       tl.to(
         slide,
         {
-          translateY: -422,
+          translateY: -this.slides[0].offsetHeight,
           onComplete: this.complete.bind(this),
           onReverseComplete: this.reverseComplete.bind(this),
         },
@@ -84,7 +88,6 @@ export default class Scroller {
       const image = images[i];
       console.log(`${i}, ${this.slideNumber}`);
       if (i < this.slideNumber) {
-        console.log(image);
         image.style.translate = '55% -160%';
         image.style.rotate = '15deg';
       } else {
