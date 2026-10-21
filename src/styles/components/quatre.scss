@@ -1,0 +1,39 @@
+.quatre .wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    height: 100%;
+
+    @media (width < $breakpoint-sm) {
+        grid-template-columns: 1fr;
+    }
+}
+.quatre {
+    height: calc(100vh - 230px);
+}
+
+.quatre__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+
+    .btn {
+        width: fit-content;
+    }
+}
+
+.quatre__media {
+    display: flex;
+    justify-content: center;
+
+    img {
+        object-fit: contain;
+        height: 100%;
+    }
+    @media (width < $breakpoint-sm) {
+        order: -1;
+        height: 50%;
+    }
+}

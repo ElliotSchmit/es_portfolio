@@ -42,7 +42,6 @@ export default class Scroller {
         end: '+=' + (this.slides.length - 1) * 50 + '%',
         pin: true,
         scrub: true,
-        snap: 0.1,
       },
     });
 
