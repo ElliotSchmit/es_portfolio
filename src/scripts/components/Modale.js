@@ -20,9 +20,7 @@ export default class Modale {
     document.documentElement.classList.add('modale-is-active');
 
     this.modale.addEventListener('click', (event) => {
-      if (event.target != image) {
-        this.onCloseModale();
-      }
+      this.onCloseModale();
     });
   }
 
