@@ -6,15 +6,25 @@ export default class Translate {
   }
 
   init() {
-    let deplacement = 0;
+    const observes = new IntersectionObserver(this.watch.bind(this), {
+      rootMargin: '0px 0px 0px 0px',
+    });
+    observes.observe(this.element);
+  }
 
-    window.onload = function () {
+  watch(entries) {
+    console.log(entries[0]);
+    if (entries[0].isIntersecting) {
+      let deplacement = 0;
+
       function test() {
         deplacement -= 10;
         document.querySelector('.js-film').style.backgroundPosition =
           `${deplacement}px`;
       }
-      setInterval(test, 100);
-    };
+      this.interval = setInterval(test, 100);
+    } else {
+      clearInterval(this.interval);
+    }
   }
 }

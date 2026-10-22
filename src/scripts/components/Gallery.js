@@ -28,7 +28,7 @@ export default class Gallery {
           end: '215%',
           pin: true,
           scrub: true,
-          /* markers: true, */
+          normalize: true,
         },
       });
 

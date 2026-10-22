@@ -7,7 +7,8 @@
     height: 100%;
 
     @media (width < $breakpoint-sm) {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
     }
 }
 .quatre {
@@ -18,6 +19,12 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
+
+    @media (width < $breakpoint-sm) {
+        align-items: center;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
 
     .btn {
         width: fit-content;
