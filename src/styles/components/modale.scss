@@ -13,8 +13,22 @@
 
     background-color: rgba($color: #22201f, $alpha: 0.5);
 
+    .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--color-white);
+        transition: all 0.3s $ease-out-expo;
+
+        &:hover {
+            transform: scale(1.1);
+            color: var(--color-primary);
+        }
+    }
+
     .wrapper {
         height: 100%;
+        position: relative;
     }
 
     img {
