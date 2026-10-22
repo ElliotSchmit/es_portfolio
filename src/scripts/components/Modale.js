@@ -25,7 +25,6 @@ export default class Modale {
   }
 
   onCloseModale() {
-    console.log('afewg');
     document.documentElement.classList.remove('modale-is-active');
     this.modale.querySelector('img').remove();
   }

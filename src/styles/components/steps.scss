@@ -57,9 +57,9 @@
         width: 50%;
 
         @media (width < $breakpoint-md) {
-            width: 65%;
+            width: 60%;
             left: 20%;
-            top: -60%;
+            top: -75%;
         }
 
         @media (width < $breakpoint-sm) {

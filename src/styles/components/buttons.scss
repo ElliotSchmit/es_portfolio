@@ -13,6 +13,10 @@
 
     font-family: var(--font-secondary);
     transition: all 0.3s $ease-out-expo;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 .btn-secondary {

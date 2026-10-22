@@ -24,6 +24,10 @@
     }
 }
 
+[data-component='Modale'] {
+    cursor: pointer;
+}
+
 .modale-is-active {
     .modale {
         display: block;

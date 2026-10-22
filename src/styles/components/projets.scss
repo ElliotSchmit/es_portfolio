@@ -41,8 +41,8 @@
 
     @media (width < $breakpoint-sm) {
         width: 90%;
-        grid-template-columns: 1fr;
-        grid-template-rows: 4fr 1fr;
+        display: flex;
+        flex-direction: column;
         gap: var(--spacing-md);
         align-self: center;
     }

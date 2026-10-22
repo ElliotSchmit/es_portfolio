@@ -13,7 +13,6 @@ export default class Translate {
   }
 
   watch(entries) {
-    console.log(entries[0]);
     if (entries[0].isIntersecting) {
       let deplacement = 0;
 
@@ -25,6 +24,7 @@ export default class Translate {
       this.interval = setInterval(test, 100);
     } else {
       clearInterval(this.interval);
+      document.querySelector('.js-film').style.backgroundPosition = `0px`;
     }
   }
 }
