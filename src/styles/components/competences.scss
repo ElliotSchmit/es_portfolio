@@ -59,6 +59,12 @@
 
         ul {
             grid-template-columns: 1fr 1.5fr;
+
+            @media (width < $breakpoint-sm) {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     }
 

@@ -98,6 +98,7 @@ export default class Experience {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
+      antialias: true,
     });
 
     this.renderer.setSize(this.width, this.height, false);
