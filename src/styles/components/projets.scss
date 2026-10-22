@@ -47,6 +47,11 @@
         align-self: center;
     }
 
+    @media (width < $breakpoint-xs) {
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+
     &:hover .icon {
         color: var(--color-primary);
         transform: scale(1.5);
@@ -147,6 +152,10 @@
         @media (width < $breakpoint-sm) {
             border-left: none;
             padding-left: 0;
+        }
+
+        @media (width < $breakpoint-xs) {
+            gap: var(--spacing-sm);
         }
 
         .icon {
