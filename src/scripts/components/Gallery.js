@@ -6,13 +6,27 @@ export default class Gallery {
   constructor(element) {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     this.element = element;
+    this.width = document.querySelector('body').clientWidth;
+    this.translate = '90%';
 
     this.init();
   }
 
   init() {
+    window.addEventListener('resize', this.resize.bind(this));
+    if (this.width <= 1024) {
+      this.translate = '70%';
+    }
     this.desktop();
     this.mobile();
+  }
+
+  resize() {
+    this.translate = '90%';
+
+    if (this.width <= 1024) {
+      this.translate = '70%';
+    }
   }
 
   desktop() {
@@ -20,7 +34,7 @@ export default class Gallery {
       const gallery = this.element.querySelector('.js-inverted');
       const tl = gsap.timeline({
         defaults: {
-          ease: 'power1.inOut',
+          ease: 'none',
         },
         scrollTrigger: {
           trigger: '.js-inverted',
@@ -35,7 +49,7 @@ export default class Gallery {
       tl.to(gallery, {
         translateY: '0%',
       }).to(gallery, {
-        translateY: '90%',
+        translateY: this.translate,
       });
     }
   }
@@ -46,18 +60,39 @@ export default class Gallery {
       const nbPanels = panels.length - 1;
       const buffer = 200;
 
-      gsap.to(panels, {
+      const tl = gsap.timeline({
+        defaults: {
+          ease: 'none',
+          delay: 'none',
+        },
+        scrollTrigger: {
+          trigger: this.element,
+          start: 'top top',
+          end: () => '+=' + (this.element.offsetWidth + buffer),
+          pin: true,
+          scrub: 1,
+          normalizeScroll: true,
+        },
+      });
+
+      tl.to(panels, {
+        translateX: '0%',
+      }).to(panels, {
+        translateX: `${-100 * nbPanels}%`,
+      });
+
+      /* gsap.to(panels, {
         xPercent: -100 * nbPanels,
         ease: 'none',
         scrollTrigger: {
-          pin: true,
           trigger: this.element,
-          scrub: 1,
-          snap: 0.5 / nbPanels,
+          start: 'top top',
           end: () => '+=' + (this.element.offsetWidth + buffer),
-          normalize: true,
+          pin: true,
+          scrub: 1,
+          normalizeScroll: true,
         },
-      });
+      }); */
     }
   }
 }
