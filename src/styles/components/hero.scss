@@ -32,9 +32,31 @@
         height: 70vh;
         width: 100%;
 
+        display: flex;
+        justify-content: center;
+
         @media (width < $breakpoint-md) {
             order: -1;
             height: 40vh;
+        }
+
+        @media (width < $breakpoint-sm) {
+            height: unset;
+        }
+
+        .webgl {
+            @media (width < $breakpoint-sm) {
+                display: none;
+            }
+        }
+
+        .media__mobile {
+            display: none;
+            object-fit: contain;
+
+            @media (width < $breakpoint-sm) {
+                display: block;
+            }
         }
     }
 }
