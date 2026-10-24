@@ -28,11 +28,11 @@ export default class Header {
     this.lastScrollPosition = this.scrollPosition;
     this.scrollPosition = document.scrollingElement.scrollTop;
 
-    this.setHeaderState();
+    /* this.setHeaderState(); */
     this.setDirections();
   }
 
-  setHeaderState() {
+  /* setHeaderState() {
     if (!('alwaysShow' in this.element.dataset)) {
       if (
         this.scrollPosition >
@@ -43,7 +43,7 @@ export default class Header {
         this.html.classList.remove('header-is-hidden');
       }
     }
-  }
+  } */
 
   setDirections() {
     if (this.scrollPosition >= this.lastScrollPosition) {

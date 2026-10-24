@@ -36,6 +36,15 @@
         width: 100%;
         object-fit: contain;
     }
+
+    .video-hidden {
+        display: none;
+    }
+}
+
+.figma-modale iframe {
+    height: 100%;
+    width: 100%;
 }
 
 [data-component='Modale'] {

@@ -55,6 +55,7 @@ export default class Gallery {
           scrub: 1,
           snap: 0.5 / nbPanels,
           end: () => '+=' + (this.element.offsetWidth + buffer),
+          normalize: true,
         },
       });
     }
