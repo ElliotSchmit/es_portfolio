@@ -30,7 +30,8 @@
     align-items: flex-end;
     z-index: 5;
 
-    a {
+    a,
+    span {
         display: block;
         height: 100%;
         width: 100%;
@@ -49,7 +50,8 @@
         flex-direction: column;
         gap: var(--spacing-md);
 
-        a {
+        a,
+        span {
             display: flex;
             gap: var(--spacing-sm);
             align-items: center;
@@ -115,7 +117,8 @@
     flex-direction: column;
     gap: var(--spacing-lg);
 
-    a {
+    a,
+    span {
         box-shadow: 0px 0px 0px 0px #fff4e9;
         transition: all 0.3s $ease-out-expo;
 

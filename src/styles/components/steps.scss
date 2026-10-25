@@ -23,11 +23,13 @@
         transform: translateY(100%);
         height: fit-content;
         display: flex;
+        justify-content: center;
         flex-direction: column;
         gap: var(--spacing-md);
         padding: var(--spacing-lg);
         padding-right: var(--spacing-md);
         width: 50%;
+        height: 450px;
 
         @media (width < $breakpoint-md) {
             width: 100%;

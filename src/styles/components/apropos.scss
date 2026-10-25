@@ -24,6 +24,12 @@
 .apropos__media {
     transition: all 0.3s $ease-out-expo;
 
+    img {
+        padding: var(--spacing-md);
+        padding-bottom: 124px;
+        background-color: var(--color-bg-secondary);
+    }
+
     @media (width < $breakpoint-sm) {
         width: 90%;
         justify-self: center;

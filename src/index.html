@@ -1,10 +1,10 @@
-{% include '_partials/_header.html' %}
+{% include '_partials/_header-index.html' %}
 
 <section class="section hero">
     <div class="wrapper">
         <div class="hero__content">
             <h1>Elliot Schmit</h1>
-
+            <p class="subtitle">Profil multidisciplinaire</p>
             <p>
                 Le côté
                 <b>logique</b>
@@ -14,7 +14,10 @@
             </p>
         </div>
         <div class="hero__media">
-            <canvas class="webgl" data-component="Experience"></canvas>
+            <div class="webgl__container js-container">
+                <canvas class="webgl" data-component="Experience"></canvas>
+            </div>
+
             <img src="assets/images/camera.png" alt="" class="media__mobile" />
         </div>
     </div>
@@ -25,7 +28,7 @@
         <h2>Mes projets</h2>
 
         <div class="cards">
-            <a href="scouts.html" class="card" data-component="Rotate">
+            <span onclick="transitionToPage('scouts.html')" class="card" data-component="Rotate">
                 <div class="card__media">
                     <img src="assets/images/scouts-thumbnail.jpeg" alt="" />
                 </div>
@@ -44,9 +47,9 @@
                     </svg>
                 </div>
                 <img class="timbre" src="assets/images/timbre-1.png" alt="" />
-            </a>
+            </span>
 
-            <a href="marche.html" class="card" data-component="Rotate">
+            <span onclick="transitionToPage('marche.html')" class="card" data-component="Rotate">
                 <div class="card__media">
                     <img src="assets/images/marche-thumbnail.jpeg" alt="" />
                 </div>
@@ -61,9 +64,9 @@
                     </svg>
                 </div>
                 <img class="timbre" src="assets/images/timbre-2.png" alt="" />
-            </a>
+            </span>
 
-            <a href="boxotel.html" class="card" data-component="Rotate">
+            <span onclick="transitionToPage('boxotel.html')" class="card" data-component="Rotate">
                 <div class="card__media">
                     <img src="assets/images/boxotel-thumbnail.jpeg" alt="" />
                 </div>
@@ -81,9 +84,9 @@
                     </svg>
                 </div>
                 <img class="timbre" src="assets/images/timbre-3.png" alt="" />
-            </a>
+            </span>
 
-            <a href="aquarelle.html" class="card" data-component="Rotate">
+            <span onclick="transitionToPage('aquarelle.html')" class="card" data-component="Rotate">
                 <div class="card__media">
                     <img src="assets/images/aquarelle-thumbnail.jpg" alt="" />
                 </div>
@@ -99,9 +102,9 @@
                     </svg>
                 </div>
                 <img class="timbre" src="assets/images/timbre-4.png" alt="" />
-            </a>
+            </span>
 
-            <a href="walkman.html" class="card" data-component="Rotate">
+            <span onclick="transitionToPage('walkman.html')" class="card" data-component="Rotate">
                 <div class="card__media">
                     <img src="assets/images/walkman-thumbnail.jpg" alt="" />
                 </div>
@@ -116,7 +119,7 @@
                     </svg>
                 </div>
                 <img class="timbre" src="assets/images/timbre-5.png" alt="" />
-            </a>
+            </span>
         </div>
     </div>
 </section>
@@ -124,7 +127,7 @@
 <section id="apropos" class="section apropos">
     <div class="wrapper">
         <div class="apropos__media">
-            <img src="assets/images/apropos.jpg" alt="" />
+            <img src="assets/images/portrait.jpg" alt="" />
         </div>
         <div class="apropos__content">
             <h2>À propos</h2>

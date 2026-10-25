@@ -18,6 +18,12 @@
   </head>
 
   <body class="js-mouse">
+    <div class="transition section">
+      <div class="wrapper">
+        <img src="assets/images/camera.png" alt="">
+      </div>
+    </div>
+
     <div class="section modale js-modale"><div class="wrapper">
       <svg class="icon icon--lg js-x">
           <use class="js-icon" href="#icon-x"></use>
@@ -27,18 +33,18 @@
 
     <header class="header" data-component="Header" data-header="fromTop" >
       <div class="wrapper">
-        <a href="index.html" class="logo">Elliot Schmit</a>
+        <span onclick="transitionToPage('index.html')" class="logo">Elliot Schmit</span>
 
         <nav class="nav-primary">
           <ul class="nav js-nav">
               <li>
-                  <a href="index.html" class="nav-primary__item">Accueil</a>
+                  <span onclick="transitionToPage('index.html#')" class="nav-primary__item">Accueil</span>
               </li>
               <li>
-                  <a href="index.html#projets" class="nav-primary__item">Mes projets</a>
+                  <span onclick="transitionToPage('index.html#projets')" class="nav-primary__item">Mes projets</span>
               </li>
               <li>
-                  <a href="index.html#apropos" class="nav-primary__item">À propos</a>
+                  <span onclick="transitionToPage('index.html#apropos')" class="nav-primary__item">À propos</span>
               </li>
               
               <li>

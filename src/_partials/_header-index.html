@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Elliot Schmit - Porfolio - Profil multidisciplinaire</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png" />
+        <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
+        <link rel="stylesheet" href="styles/main.css" />
+
+        <script src="scripts/vendors.js" defer></script>
+        <script src="scripts/main.js" defer></script>
+    </head>
+
+    <body class="js-mouse">
+        <div class="transition section">
+            <div class="wrapper">
+                <img src="assets/images/camera.png" alt="" />
+            </div>
+        </div>
+
+        <div class="section modale js-modale">
+            <div class="wrapper">
+                <svg class="icon icon--lg js-x">
+                    <use class="js-icon" href="#icon-x"></use>
+                </svg>
+                <div class="js-video"></div>
+            </div>
+        </div>
+
+        <header class="header" data-component="Header" data-header="fromTop">
+            <div class="wrapper">
+                <span onclick="transitionToPage('index.html')" class="logo">Elliot Schmit</span>
+
+                <nav class="nav-primary">
+                    <ul class="nav js-nav">
+                        <li>
+                            <a href="index.html#" class="nav-primary__item">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="index.html#projets" class="nav-primary__item">Mes projets</a>
+                        </li>
+                        <li>
+                            <a href="index.html#apropos" class="nav-primary__item">À propos</a>
+                        </li>
+
+                        <li>
+                            <ul class="socials">
+                                <li>
+                                    <a href="https://www.instagram.com/elliotschmit/" target="_blank">
+                                        <svg class="icon">
+                                            <use href="#icon-instagram"></use>
+                                        </svg>
+                                        Instagram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://youtube.com/@elliotschmit?si=RR1Z4JjvS5XWAOOx" target="_blank">
+                                        <svg class="icon">
+                                            <use href="#icon-youtube"></use>
+                                        </svg>
+                                        Youtube
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/ElliotSchmit" target="_blank">
+                                        <svg class="icon">
+                                            <use href="#icon-github"></use>
+                                        </svg>
+                                        Github
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/elliot-schmit-5372b1441/" target="_blank">
+                                        <svg class="icon">
+                                            <use href="#icon-linkedin"></use>
+                                        </svg>
+                                        Linkedin
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <button class="header__toggle js-toggle">
+                        <div class="toggle__media">
+                            <svg class="icon icon--xl">
+                                <use href="#icon-signet"></use>
+                            </svg>
+                        </div>
+                        <div class="toggle__content">
+                            <p>Menu</p>
+                        </div>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <div class="header__height"></div>
+    </body>
+</html>

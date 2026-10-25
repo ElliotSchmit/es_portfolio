@@ -1,6 +1,16 @@
 /* ==========================================================================
    modale / component
    ========================================================================== */
+@keyframes modaleAnim {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 .modale {
     display: none;
@@ -54,6 +64,12 @@
 .modale-is-active {
     .modale {
         display: block;
+
+        img,
+        iframe {
+            animation-name: modaleAnim;
+            animation-duration: 0.4s;
+        }
     }
     body {
         overflow: hidden;

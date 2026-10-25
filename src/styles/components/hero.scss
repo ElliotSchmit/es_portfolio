@@ -23,8 +23,15 @@
     }
 
     .hero__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
         @media (width < $breakpoint-md) {
             text-align: center;
+        }
+
+        p {
+            margin: 0;
         }
     }
 
@@ -42,6 +49,10 @@
 
         @media (width < $breakpoint-sm) {
             height: unset;
+        }
+
+        .webgl-container {
+            width: 100%;
         }
 
         .webgl {
