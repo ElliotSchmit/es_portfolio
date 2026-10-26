@@ -1,3 +1,4 @@
+import Drawing from './components/Drawing.js';
 import Experience from './components/Experience.js';
 import FigmaModale from './components/FigmaModale.js';
 import Form from './components/Form.js';
@@ -14,6 +15,7 @@ export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
     this.componentList = {
+      Drawing,
       Experience,
       FigmaModale,
       Form,
