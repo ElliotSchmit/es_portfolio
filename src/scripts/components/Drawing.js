@@ -17,8 +17,8 @@ export default class Drawing {
 
     this.element.addEventListener('mousemove', this.draw.bind(this));
     this.element.addEventListener('mousedown', this.position.bind(this));
-    this.element.addEventListener('ontouchstart', this.position.bind(this));
-    this.element.addEventListener('ontouchmove', this.draw.bind(this));
+    this.element.addEventListener('touchstart', this.position.bind(this));
+    this.element.addEventListener('touchmove', this.draw.bind(this));
 
     /* this.context.beginPath();
 

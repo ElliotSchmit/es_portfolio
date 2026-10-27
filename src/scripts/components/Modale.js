@@ -26,6 +26,9 @@ export default class Modale {
 
   onCloseModale() {
     document.documentElement.classList.remove('modale-is-active');
-    this.modale.querySelector('img').remove();
+
+    if (this.modale.querySelector('img')) {
+      this.modale.querySelector('img').remove();
+    }
   }
 }
