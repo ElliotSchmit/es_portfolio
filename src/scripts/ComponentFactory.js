@@ -9,7 +9,6 @@ import Rotate from './components/Rotate.js';
 import Scroller from './components/Scroller.js';
 import Translate from './components/Translate.js';
 import YouTube from './components/YouTube.js';
-import YoutubeModale from './components/YoutubeModale.js';
 
 export default class ComponentFactory {
   constructor() {
@@ -26,7 +25,6 @@ export default class ComponentFactory {
       Scroller,
       Translate,
       YouTube,
-      YoutubeModale,
     };
     this.init();
   }

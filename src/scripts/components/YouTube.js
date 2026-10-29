@@ -7,8 +7,10 @@ export default class YouTube {
     this.videoId = this.element.dataset.videoId;
     this.autoplay = this.poster ? 1 : 0;
     this.playerReady = false;
+
     this.options = {
       controls: 1,
+      modale: false,
     };
 
     YouTube.instances.push(this);
@@ -33,8 +35,10 @@ export default class YouTube {
     this.setOptions();
 
     this.initPlayer = this.initPlayer.bind(this);
-    if (this.poster) {
+    if (this.poster && this.options.modale == false) {
       this.element.addEventListener('click', this.initPlayer.bind(this));
+    } else if (this.poster && this.options.modale == true) {
+      this.button.addEventListener('click', this.initPlayer.bind(this));
     } else {
       this.initPlayer();
     }
@@ -42,7 +46,32 @@ export default class YouTube {
 
   initPlayer(event) {
     if (event) {
-      this.element.removeEventListener('click', this.initPlayer);
+      if (this.options.modale == false) {
+        this.element.removeEventListener('click', this.initPlayer);
+      } else {
+        this.button.removeEventListener('click', this.initPlayer);
+      }
+    }
+
+    if (this.options.modale == true) {
+      document
+        .querySelector('.js-modale')
+        .querySelector('.js-video')
+        .classList.remove('video-hidden');
+
+      document.documentElement.addEventListener('click', (event) => {
+        if (
+          event.target == document.querySelector('.js-modale') ||
+          event.target ==
+            document.querySelector('.js-modale').querySelector('.js-x') ||
+          event.target ==
+            document.querySelector('.js-modale').querySelector('.js-icon')
+        ) {
+          this.onCloseModale();
+        }
+      });
+
+      document.documentElement.classList.add('modale-is-active');
     }
 
     this.player = new YT.Player(this.videoContainer, {
@@ -57,17 +86,22 @@ export default class YouTube {
       events: {
         onReady: () => {
           this.playerReady = true;
-          const observer = new IntersectionObserver(this.watch.bind(this), {
-            rootMargin: '0px 0px 0px 0px',
-          });
-          observer.observe(this.element);
+
+          if (this.options.modale == false) {
+            const observer = new IntersectionObserver(this.watch.bind(this), {
+              rootMargin: '0px 0px 0px 0px',
+            });
+            observer.observe(this.element);
+          }
         },
         onStateChange: (event) => {
-          if (event.data == YT.PlayerState.PLAYING) {
-            YouTube.pauseAll(this);
-          } else if (event.data == YT.PlayerState.ENDED) {
-            this.player.seekTo(0);
-            this.player.pauseVideo();
+          if (this.options.modale == false) {
+            if (event.data == YT.PlayerState.PLAYING) {
+              YouTube.pauseAll(this);
+            } else if (event.data == YT.PlayerState.ENDED) {
+              this.player.seekTo(0);
+              this.player.pauseVideo();
+            }
           }
         },
       },
@@ -78,6 +112,15 @@ export default class YouTube {
     if (this.playerReady && !entries[0].isIntersecting) {
       this.player.pauseVideo();
     }
+  }
+
+  onCloseModale() {
+    document.documentElement.classList.remove('modale-is-active');
+    this.player.pauseVideo();
+    document
+      .querySelector('.js-modale')
+      .querySelector('.js-video')
+      .classList.add('video-hidden');
   }
 
   static initAll() {
@@ -101,6 +144,16 @@ export default class YouTube {
   setOptions() {
     if ('noControls' in this.element.dataset) {
       this.options.controls = 0;
+    }
+    console.log(this.options.controls);
+
+    if ('modale' in this.element.dataset) {
+      console.log('modale');
+      this.options.modale = true;
+      this.button = this.element.querySelector('.js-button');
+      this.videoContainer = document
+        .querySelector('.js-modale')
+        .querySelector('.js-video');
     }
   }
 }
